@@ -1,0 +1,110 @@
+import { GameDefinition } from '@/lib/types';
+
+export const games: GameDefinition[] = [
+  {
+    id: 'celebrities',
+    title: 'Célébrités',
+    description: 'Devinez le sexe de naissance de chaque personne.',
+    available: true,
+    emoji: '⭐',
+    people: [
+      // === PERSONNES TRANS ===
+      // Trans femmes → gender: femme / birthSex: homme
+      {
+        id: 'geena-rocero',
+        src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Geena_Rocero_for_Chromat.jpg/330px-Geena_Rocero_for_Chromat.jpg',
+        name: 'Geena Rocero',
+        isTrans: true,
+        gender: 'femme',
+        birthSex: 'homme',
+        source: 'Wikimedia Commons CC-BY-SA',
+      },
+      {
+        id: 'trace-lysette',
+        src: 'https://upload.wikimedia.org/wikipedia/commons/e/e9/Trace_Lysette_at_the_premier_for_Hustlers_%28cropped%29.jpg',
+        name: 'Trace Lysette',
+        isTrans: true,
+        gender: 'femme',
+        birthSex: 'homme',
+        source: 'Wikimedia Commons CC-BY-SA',
+      },
+      {
+        id: 'isis-king',
+        src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Isis_King.jpg/330px-Isis_King.jpg',
+        name: 'Isis King',
+        isTrans: true,
+        gender: 'femme',
+        birthSex: 'homme',
+        source: 'Wikimedia Commons CC-BY-SA',
+      },
+      // Trans homme → gender: homme / birthSex: femme
+      {
+        id: 'laith-ashley',
+        src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Laith_Ashley_in_the_music_video_for_%22Girl_Baby%22_by_Ezra_Michel.png/330px-Laith_Ashley_in_the_music_video_for_%22Girl_Baby%22_by_Ezra_Michel.png',
+        name: 'Laith Ashley',
+        isTrans: true,
+        gender: 'homme',
+        birthSex: 'femme',
+        source: 'Wikimedia Commons CC-BY-SA',
+      },
+      // === PERSONNES CIS — birthSex = gender ===
+      {
+        id: 'cis-1',
+        src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Sara_Forestier-66661.jpg/330px-Sara_Forestier-66661.jpg',
+        name: 'Sara Forestier',
+        isTrans: false,
+        gender: 'femme',
+        birthSex: 'femme',
+        source: 'Wikimedia Commons CC-BY-SA',
+      },
+      {
+        id: 'cis-2',
+        src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Tahar_Rahim_Samba_avp_2014_2.jpg/330px-Tahar_Rahim_Samba_avp_2014_2.jpg',
+        name: 'Tahar Rahim',
+        isTrans: false,
+        gender: 'homme',
+        birthSex: 'homme',
+        source: 'Wikimedia Commons CC-BY-SA',
+      },
+      {
+        id: 'cis-3',
+        src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/A%C3%AFssa_Ma%C3%AFga_at_Cannes_Film_Festival_2025_03_%28cropped%29.jpg/330px-A%C3%AFssa_Ma%C3%AFga_at_Cannes_Film_Festival_2025_03_%28cropped%29.jpg',
+        name: 'Aïssa Maïga',
+        isTrans: false,
+        gender: 'femme',
+        birthSex: 'femme',
+        source: 'Wikimedia Commons CC-BY-SA',
+      },
+      {
+        id: 'cis-4',
+        src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Roschdy_Zem_2017_2.jpg/330px-Roschdy_Zem_2017_2.jpg',
+        name: 'Roschdy Zem',
+        isTrans: false,
+        gender: 'homme',
+        birthSex: 'homme',
+        source: 'Wikimedia Commons CC-BY-SA',
+      },
+    ],
+  },
+  {
+    id: 'portraits',
+    title: 'Portraits',
+    description: 'Des personnes de tous horizons, issues du Gender Spectrum.',
+    available: false,
+    emoji: '📸',
+  },
+  {
+    id: 'artistes',
+    title: 'Artistes',
+    description: 'Musicien·nes, acteur·rices, créateur·rices.',
+    available: false,
+    emoji: '🎨',
+  },
+  {
+    id: 'sport',
+    title: 'Sport',
+    description: 'Des athlètes du monde entier.',
+    available: false,
+    emoji: '🏆',
+  },
+];
