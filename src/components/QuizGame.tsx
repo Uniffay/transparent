@@ -20,6 +20,7 @@ export default function QuizGame({ people, gameTitle }: { people: Person[]; game
   const [lastGuess, setLastGuess] = useState<boolean | null>(null);
 
   const current = shuffled[index];
+  const answeredCount = answers.length;
 
   const handleGuess = useCallback(
     (guessedTrans: boolean) => {
@@ -43,8 +44,13 @@ export default function QuizGame({ people, gameTitle }: { people: Person[]; game
     }
   }, [index, shuffled.length]);
 
+  const handleFinishEarly = useCallback(() => {
+    setPhase('results');
+  }, []);
+
   const score = answers.filter((a) => a.correct).length;
-  const transCount = shuffled.filter((p) => p.isTrans).length;
+  const answeredPeople = shuffled.slice(0, answers.length);
+  const transCount = answeredPeople.filter((p) => p.isTrans).length;
 
   if (phase === 'intro') {
     return (
@@ -57,7 +63,7 @@ export default function QuizGame({ people, gameTitle }: { people: Person[]; game
             Pour chaque photo, devinez si la personne est trans ou non.
           </p>
           <p className="text-gray-500 text-sm mb-6">
-            {shuffled.length} personnes à identifier.
+            {shuffled.length} personnes — ordre aléatoire. Partez quand vous voulez.
           </p>
           <button
             onClick={() => setPhase('playing')}
@@ -71,19 +77,21 @@ export default function QuizGame({ people, gameTitle }: { people: Person[]; game
   }
 
   if (phase === 'results') {
-    const transAnswers = shuffled.map((p, i) => ({ person: p, answer: answers[i] }));
     return (
       <div className="flex flex-col items-center justify-center min-h-screen px-6 py-12" style={{ background: transBackground }}>
         <TransDecorations />
         <div className="z-10 bg-white/95 rounded-3xl p-8 shadow-xl max-w-lg w-full">
           <h2 className="text-3xl font-black text-center text-[#55CDFC] mb-1">Résultats</h2>
           <p className="text-center text-gray-500 text-sm mb-6">
-            Score : {score}/{shuffled.length} correct{score > 1 ? 's' : ''}
+            Score : {score}/{answeredCount} correct{score > 1 ? 's' : ''}
+            {answeredCount < shuffled.length && (
+              <span className="ml-1 text-gray-400">({answeredCount}/{shuffled.length} jouées)</span>
+            )}
           </p>
 
           <div className="bg-gradient-to-r from-[#55CDFC]/20 to-[#F7A8B8]/20 rounded-2xl p-5 mb-6 text-center">
             <p className="text-lg font-bold text-gray-700 mb-1">
-              {transCount} personne{transCount > 1 ? 's' : ''} sur {shuffled.length}{' '}
+              {transCount} personne{transCount > 1 ? 's' : ''} sur {answeredCount}{' '}
               {transCount > 1 ? 'étaient' : 'était'} trans.
             </p>
             <p className="text-gray-500 text-sm">
@@ -91,32 +99,35 @@ export default function QuizGame({ people, gameTitle }: { people: Person[]; game
             </p>
           </div>
 
-          <div className="flex flex-col gap-3 mb-6">
-            {transAnswers.map(({ person, answer }) => (
-              <div key={person.id} className="flex items-center gap-3 p-3 rounded-xl bg-gray-50">
-                <div className="relative w-12 h-12 rounded-full overflow-hidden flex-shrink-0 bg-gray-200">
-                  <Image src={person.src} alt={person.name ?? 'Photo'} fill className="object-cover" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <p className="font-bold text-gray-800 truncate">{person.name ?? 'Inconnu·e'}</p>
-                  <div className="flex items-center gap-1 flex-wrap">
-                    {person.isTrans ? (
-                      <span className="inline-block bg-[#F7A8B8] text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
-                        Trans ⚧
-                      </span>
-                    ) : (
-                      <span className="inline-block bg-gray-200 text-gray-600 text-[10px] font-bold px-2 py-0.5 rounded-full">
-                        Pas trans
-                      </span>
-                    )}
-                    <span className="text-[10px] text-gray-400">
-                      Vous avez dit : {answer?.guessedTrans ? 'Trans' : 'Pas trans'}
-                    </span>
+          <div className="flex flex-col gap-3 mb-6 max-h-80 overflow-y-auto">
+            {answeredPeople.map((person, i) => {
+              const answer = answers[i];
+              return (
+                <div key={person.id} className="flex items-center gap-3 p-3 rounded-xl bg-gray-50">
+                  <div className="relative w-12 h-12 rounded-full overflow-hidden flex-shrink-0 bg-gray-200">
+                    <Image src={person.src} alt={person.name ?? 'Photo'} fill className="object-cover object-top" />
                   </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="font-bold text-gray-800 truncate">{person.name ?? 'Inconnu·e'}</p>
+                    <div className="flex items-center gap-1 flex-wrap">
+                      {person.isTrans ? (
+                        <span className="inline-block bg-[#F7A8B8] text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
+                          Trans ⚧
+                        </span>
+                      ) : (
+                        <span className="inline-block bg-gray-200 text-gray-600 text-[10px] font-bold px-2 py-0.5 rounded-full">
+                          Pas trans
+                        </span>
+                      )}
+                      <span className="text-[10px] text-gray-400">
+                        → vous : {answer?.guessedTrans ? 'Trans' : 'Pas trans'}
+                      </span>
+                    </div>
+                  </div>
+                  <span className="text-lg">{answer?.correct ? '✓' : '✗'}</span>
                 </div>
-                <span className="text-lg">{answer?.correct ? '✓' : '✗'}</span>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           <div className="text-center text-gray-500 text-xs mb-6 italic">
@@ -152,7 +163,7 @@ export default function QuizGame({ people, gameTitle }: { people: Person[]; game
     <div className="flex flex-col items-center justify-center min-h-screen px-6" style={{ background: transBackground }}>
       <TransDecorations />
       <div className="z-10 w-full max-w-sm">
-        {/* Progress */}
+        {/* Header */}
         <div className="flex items-center justify-between mb-4 px-1">
           <Link href="/" className="text-white/70 hover:text-white text-sm transition-colors">
             ← Menu
@@ -160,25 +171,34 @@ export default function QuizGame({ people, gameTitle }: { people: Person[]; game
           <span className="text-white/80 text-sm font-semibold">
             {index + 1} / {shuffled.length}
           </span>
+          {answeredCount > 0 && phase === 'playing' && (
+            <button
+              onClick={handleFinishEarly}
+              className="text-white/70 hover:text-white text-xs border border-white/40 hover:border-white/70 px-2 py-1 rounded-lg transition-all"
+            >
+              Terminer
+            </button>
+          )}
+          {answeredCount === 0 && <div className="w-16" />}
         </div>
 
         {/* Progress bar */}
         <div className="w-full h-2 bg-white/30 rounded-full mb-6 overflow-hidden">
           <div
             className="h-full bg-white rounded-full transition-all duration-500"
-            style={{ width: `${((index + 1) / shuffled.length) * 100}%` }}
+            style={{ width: `${((index + (phase === 'feedback' ? 1 : 0)) / shuffled.length) * 100}%` }}
           />
         </div>
 
         {/* Card */}
         <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
-          {/* Image */}
-          <div className="relative w-full aspect-square bg-gray-100">
+          {/* Image — format portrait 3:4, face en haut */}
+          <div className="relative w-full overflow-hidden" style={{ aspectRatio: '3/4', maxHeight: '420px' }}>
             <Image
               src={current.src}
               alt="Qui est cette personne ?"
               fill
-              className="object-cover"
+              className="object-cover object-top"
               priority
             />
 
@@ -204,14 +224,14 @@ export default function QuizGame({ people, gameTitle }: { people: Person[]; game
                 <div className="grid grid-cols-2 gap-3">
                   <button
                     onClick={() => handleGuess(true)}
-                    className="py-4 rounded-2xl font-black text-lg text-white shadow-md hover:scale-[1.03] transition-all"
+                    className="py-4 rounded-2xl font-black text-lg text-white shadow-md hover:scale-[1.03] active:scale-95 transition-all"
                     style={{ background: 'linear-gradient(135deg, #F7A8B8, #e88fa0)' }}
                   >
                     ⚧ Trans
                   </button>
                   <button
                     onClick={() => handleGuess(false)}
-                    className="py-4 rounded-2xl font-black text-lg text-white shadow-md hover:scale-[1.03] transition-all"
+                    className="py-4 rounded-2xl font-black text-lg text-white shadow-md hover:scale-[1.03] active:scale-95 transition-all"
                     style={{ background: 'linear-gradient(135deg, #55CDFC, #3bb8e8)' }}
                   >
                     Pas trans
@@ -225,7 +245,7 @@ export default function QuizGame({ people, gameTitle }: { people: Person[]; game
                 </p>
                 <p className="text-center text-gray-500 text-sm mb-4">
                   {current.isTrans ? (
-                    <span>
+                    <>
                       <span className="font-bold text-gray-700">{current.name}</span> est{' '}
                       <span className="inline-block bg-[#F7A8B8] text-white text-xs font-bold px-2 py-0.5 rounded-full">
                         Trans ⚧
@@ -235,7 +255,7 @@ export default function QuizGame({ people, gameTitle }: { people: Person[]; game
                           Impossible de le voir, non ?
                         </span>
                       )}
-                    </span>
+                    </>
                   ) : (
                     <span>
                       <span className="font-bold text-gray-700">{current.name}</span> n&apos;est pas trans.
@@ -244,7 +264,7 @@ export default function QuizGame({ people, gameTitle }: { people: Person[]; game
                 </p>
                 <button
                   onClick={handleNext}
-                  className="w-full py-4 rounded-2xl font-black text-lg text-white shadow-md hover:opacity-90 transition-opacity"
+                  className="w-full py-4 rounded-2xl font-black text-lg text-white shadow-md hover:opacity-90 active:scale-95 transition-all"
                   style={{ background: 'linear-gradient(135deg, #55CDFC, #F7A8B8)' }}
                 >
                   {index + 1 >= shuffled.length ? 'Voir les résultats →' : 'Suivant →'}
