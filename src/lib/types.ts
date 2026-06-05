@@ -5,8 +5,8 @@ export type Person = {
   src: string;
   name?: string;
   isTrans: boolean;
-  gender: Gender;      // identité de genre actuelle (pour l'affichage résultats)
-  birthSex: Gender;    // sexe de naissance = la bonne réponse du jeu
+  gender: Gender;
+  birthSex: Gender;
   source?: string;
 };
 
@@ -17,10 +17,4 @@ export type GameDefinition = {
   available: boolean;
   emoji: string;
   people?: Person[];
-};
-
-export type Answer = {
-  personId: string;
-  guessedTrans: boolean;
-  correct: boolean;
 };

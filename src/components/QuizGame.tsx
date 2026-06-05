@@ -1,56 +1,94 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Person, Answer } from '@/lib/types';
+import { Person } from '@/lib/types';
 
-type Phase = 'intro' | 'playing' | 'feedback' | 'results';
+type Phase = 'intro' | 'playing' | 'feedback';
+
+const HS_KEY = 'transparent_high_score';
 
 function shuffle<T>(arr: T[]): T[] {
   return [...arr].sort(() => Math.random() - 0.5);
 }
 
 export default function QuizGame({ people, gameTitle }: { people: Person[]; gameTitle: string }) {
-  const [shuffled] = useState(() => shuffle(people));
-  const [phase, setPhase] = useState<Phase>('intro');
+  const [deck, setDeck] = useState<Person[]>(() => shuffle(people));
   const [index, setIndex] = useState(0);
-  const [answers, setAnswers] = useState<Answer[]>([]);
+  const [phase, setPhase] = useState<Phase>('intro');
+  const [score, setScore] = useState(0);
+  const [highScore, setHighScore] = useState(0);
   const [lastCorrect, setLastCorrect] = useState<boolean | null>(null);
-  const [lastGuess, setLastGuess] = useState<boolean | null>(null);
+  const [newRecord, setNewRecord] = useState(false);
+  const autoTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const current = shuffled[index];
-  const answeredCount = answers.length;
+  useEffect(() => {
+    const saved = parseInt(localStorage.getItem(HS_KEY) ?? '0', 10);
+    setHighScore(isNaN(saved) ? 0 : saved);
+  }, []);
+
+  const saveHighScore = useCallback((newScore: number) => {
+    setHighScore((prev) => {
+      if (newScore > prev) {
+        localStorage.setItem(HS_KEY, String(newScore));
+        return newScore;
+      }
+      return prev;
+    });
+  }, []);
+
+  const advance = useCallback(() => {
+    setDeck((prev) => {
+      const nextIndex = index + 1;
+      if (nextIndex >= prev.length) {
+        // Reshuffle pour boucle infinie
+        setIndex(0);
+        return shuffle(people);
+      }
+      setIndex(nextIndex);
+      return prev;
+    });
+    setPhase('playing');
+    setLastCorrect(null);
+    setNewRecord(false);
+  }, [index, people]);
 
   const handleGuess = useCallback(
     (guessedTrans: boolean) => {
+      if (autoTimer.current) clearTimeout(autoTimer.current);
+      const current = deck[index];
       const correct = guessedTrans === current.isTrans;
       setLastCorrect(correct);
-      setLastGuess(guessedTrans);
-      setAnswers((prev) => [...prev, { personId: current.id, guessedTrans, correct }]);
       setPhase('feedback');
+
+      if (correct) {
+        const next = score + 1;
+        setScore(next);
+        saveHighScore(next);
+        // Auto-advance après 600ms sur bonne réponse
+        autoTimer.current = setTimeout(() => advance(), 600);
+      } else {
+        // Mauvaise réponse : on check le record AVANT reset
+        setHighScore((prev) => {
+          const isNew = score > prev;
+          if (isNew) {
+            localStorage.setItem(HS_KEY, String(score));
+            setNewRecord(true);
+            return score;
+          }
+          setNewRecord(false);
+          return prev;
+        });
+        setScore(0);
+      }
     },
-    [current]
+    [deck, index, score, advance, saveHighScore]
   );
 
-  const handleNext = useCallback(() => {
-    if (index + 1 >= shuffled.length) {
-      setPhase('results');
-    } else {
-      setIndex((i) => i + 1);
-      setPhase('playing');
-      setLastCorrect(null);
-      setLastGuess(null);
-    }
-  }, [index, shuffled.length]);
+  useEffect(() => () => { if (autoTimer.current) clearTimeout(autoTimer.current); }, []);
 
-  const handleFinishEarly = useCallback(() => {
-    setPhase('results');
-  }, []);
-
-  const score = answers.filter((a) => a.correct).length;
-  const answeredPeople = shuffled.slice(0, answers.length);
-  const transCount = answeredPeople.filter((p) => p.isTrans).length;
+  const current = deck[index];
 
   if (phase === 'intro') {
     return (
@@ -59,12 +97,19 @@ export default function QuizGame({ people, gameTitle }: { people: Person[]; game
         <div className="z-10 bg-white/90 rounded-3xl p-10 shadow-xl max-w-md w-full">
           <div className="text-5xl mb-4">⚧</div>
           <h1 className="text-3xl font-black text-[#55CDFC] mb-2">{gameTitle}</h1>
-          <p className="text-gray-600 mb-1">
-            Pour chaque photo, devinez si la personne est trans ou non.
+          <p className="text-gray-600 text-sm mb-2">
+            Trans ou pas trans ? Enchaîne les bonnes réponses.
           </p>
-          <p className="text-gray-500 text-sm mb-6">
-            {shuffled.length} personnes — ordre aléatoire. Partez quand vous voulez.
+          <p className="text-gray-500 text-sm mb-2">
+            Une erreur = score remis à zéro.
           </p>
+          {highScore > 0 && (
+            <div className="bg-gradient-to-r from-[#55CDFC]/20 to-[#F7A8B8]/20 rounded-2xl px-4 py-3 mb-6 inline-block">
+              <p className="text-sm text-gray-500">Ton record</p>
+              <p className="text-3xl font-black text-[#55CDFC]">{highScore}</p>
+            </div>
+          )}
+          {highScore === 0 && <div className="mb-6" />}
           <button
             onClick={() => setPhase('playing')}
             className="w-full bg-gradient-to-r from-[#55CDFC] to-[#F7A8B8] text-white font-black text-lg py-4 rounded-2xl hover:opacity-90 hover:scale-[1.02] transition-all shadow-md"
@@ -76,123 +121,31 @@ export default function QuizGame({ people, gameTitle }: { people: Person[]; game
     );
   }
 
-  if (phase === 'results') {
-    return (
-      <div className="flex flex-col items-center justify-center min-h-screen px-6 py-12" style={{ background: transBackground }}>
-        <TransDecorations />
-        <div className="z-10 bg-white/95 rounded-3xl p-8 shadow-xl max-w-lg w-full">
-          <h2 className="text-3xl font-black text-center text-[#55CDFC] mb-1">Résultats</h2>
-          <p className="text-center text-gray-500 text-sm mb-6">
-            Score : {score}/{answeredCount} correct{score > 1 ? 's' : ''}
-            {answeredCount < shuffled.length && (
-              <span className="ml-1 text-gray-400">({answeredCount}/{shuffled.length} jouées)</span>
-            )}
-          </p>
-
-          <div className="bg-gradient-to-r from-[#55CDFC]/20 to-[#F7A8B8]/20 rounded-2xl p-5 mb-6 text-center">
-            <p className="text-lg font-bold text-gray-700 mb-1">
-              {transCount} personne{transCount > 1 ? 's' : ''} sur {answeredCount}{' '}
-              {transCount > 1 ? 'étaient' : 'était'} trans.
-            </p>
-            <p className="text-gray-500 text-sm">
-              Impossible de le deviner visuellement. ♡
-            </p>
-          </div>
-
-          <div className="flex flex-col gap-3 mb-6 max-h-80 overflow-y-auto">
-            {answeredPeople.map((person, i) => {
-              const answer = answers[i];
-              return (
-                <div key={person.id} className="flex items-center gap-3 p-3 rounded-xl bg-gray-50">
-                  <div className="relative w-12 h-12 rounded-full overflow-hidden flex-shrink-0 bg-gray-200">
-                    <Image src={person.src} alt={person.name ?? 'Photo'} fill className="object-cover object-top" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="font-bold text-gray-800 truncate">{person.name ?? 'Inconnu·e'}</p>
-                    <div className="flex items-center gap-1 flex-wrap">
-                      {person.isTrans ? (
-                        <span className="inline-block bg-[#F7A8B8] text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
-                          Trans ⚧
-                        </span>
-                      ) : (
-                        <span className="inline-block bg-gray-200 text-gray-600 text-[10px] font-bold px-2 py-0.5 rounded-full">
-                          Pas trans
-                        </span>
-                      )}
-                      <span className="text-[10px] text-gray-400">
-                        → vous : {answer?.guessedTrans ? 'Trans' : 'Pas trans'}
-                      </span>
-                    </div>
-                  </div>
-                  <span className="text-lg">{answer?.correct ? '✓' : '✗'}</span>
-                </div>
-              );
-            })}
-          </div>
-
-          <div className="text-center text-gray-500 text-xs mb-6 italic">
-            Une personne trans n&apos;est pas &quot;visible&quot;. Laissez-les vivre. 🏳️‍⚧️
-          </div>
-
-          <div className="flex gap-3">
-            <button
-              onClick={() => {
-                setAnswers([]);
-                setIndex(0);
-                setPhase('intro');
-                setLastCorrect(null);
-                setLastGuess(null);
-              }}
-              className="flex-1 border-2 border-[#55CDFC] text-[#55CDFC] font-bold py-3 rounded-2xl hover:bg-[#55CDFC]/10 transition-colors"
-            >
-              Rejouer
-            </button>
-            <Link
-              href="/"
-              className="flex-1 bg-gradient-to-r from-[#55CDFC] to-[#F7A8B8] text-white font-bold py-3 rounded-2xl text-center hover:opacity-90 transition-opacity"
-            >
-              Menu ♡
-            </Link>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="flex flex-col items-center justify-center min-h-screen px-6" style={{ background: transBackground }}>
       <TransDecorations />
       <div className="z-10 w-full max-w-sm">
-        {/* Header */}
+
+        {/* Header scores */}
         <div className="flex items-center justify-between mb-4 px-1">
           <Link href="/" className="text-white/70 hover:text-white text-sm transition-colors">
             ← Menu
           </Link>
-          <span className="text-white/80 text-sm font-semibold">
-            {index + 1} / {shuffled.length}
-          </span>
-          {answeredCount > 0 && phase === 'playing' && (
-            <button
-              onClick={handleFinishEarly}
-              className="text-white/70 hover:text-white text-xs border border-white/40 hover:border-white/70 px-2 py-1 rounded-lg transition-all"
-            >
-              Terminer
-            </button>
-          )}
-          {answeredCount === 0 && <div className="w-16" />}
-        </div>
-
-        {/* Progress bar */}
-        <div className="w-full h-2 bg-white/30 rounded-full mb-6 overflow-hidden">
-          <div
-            className="h-full bg-white rounded-full transition-all duration-500"
-            style={{ width: `${((index + (phase === 'feedback' ? 1 : 0)) / shuffled.length) * 100}%` }}
-          />
+          <div className="flex gap-4 items-center">
+            <div className="text-center">
+              <p className="text-white/60 text-[10px] uppercase tracking-widest">Score</p>
+              <p className="text-white font-black text-2xl leading-none">{score}</p>
+            </div>
+            <div className="text-center">
+              <p className="text-white/60 text-[10px] uppercase tracking-widest">Record</p>
+              <p className="text-white/80 font-black text-2xl leading-none">{highScore}</p>
+            </div>
+          </div>
         </div>
 
         {/* Card */}
         <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
-          {/* Image — format portrait 3:4, face en haut */}
+          {/* Image */}
           <div className="relative w-full overflow-hidden" style={{ aspectRatio: '3/4', maxHeight: '420px' }}>
             <Image
               src={current.src}
@@ -204,17 +157,13 @@ export default function QuizGame({ people, gameTitle }: { people: Person[]; game
 
             {/* Feedback overlay */}
             {phase === 'feedback' && (
-              <div
-                className={`absolute inset-0 flex items-center justify-center text-7xl font-black ${
-                  lastCorrect ? 'bg-green-500/30' : 'bg-red-400/30'
-                }`}
-              >
+              <div className={`absolute inset-0 flex items-center justify-center text-8xl font-black transition-opacity ${lastCorrect ? 'bg-green-500/30' : 'bg-red-400/40'}`}>
                 {lastCorrect ? '✓' : '✗'}
               </div>
             )}
           </div>
 
-          {/* Buttons */}
+          {/* Buttons / Feedback */}
           <div className="p-5">
             {phase === 'playing' ? (
               <>
@@ -238,36 +187,39 @@ export default function QuizGame({ people, gameTitle }: { people: Person[]; game
                   </button>
                 </div>
               </>
+            ) : lastCorrect ? (
+              /* Bonne réponse — auto-advance */
+              <p className="text-center text-green-500 font-black text-xl py-2">
+                Correct ! +1 ✓
+              </p>
             ) : (
+              /* Mauvaise réponse */
               <>
-                <p className={`text-center font-black text-xl mb-1 ${lastCorrect ? 'text-green-500' : 'text-red-400'}`}>
-                  {lastCorrect ? 'Correct !' : 'Incorrect'}
+                <p className="text-center font-black text-xl text-red-400 mb-1">
+                  Raté !
                 </p>
-                <p className="text-center text-gray-500 text-sm mb-4">
+                <p className="text-center text-gray-500 text-sm mb-1">
+                  {current.name} est{' '}
                   {current.isTrans ? (
-                    <>
-                      <span className="font-bold text-gray-700">{current.name}</span> est{' '}
-                      <span className="inline-block bg-[#F7A8B8] text-white text-xs font-bold px-2 py-0.5 rounded-full">
-                        Trans ⚧
-                      </span>
-                      {lastGuess === false && (
-                        <span className="block text-xs text-gray-400 mt-1">
-                          Impossible de le voir, non ?
-                        </span>
-                      )}
-                    </>
+                    <span className="inline-block bg-[#F7A8B8] text-white text-xs font-bold px-2 py-0.5 rounded-full">Trans ⚧</span>
                   ) : (
-                    <span>
-                      <span className="font-bold text-gray-700">{current.name}</span> n&apos;est pas trans.
-                    </span>
+                    <span className="font-bold">pas trans</span>
                   )}
                 </p>
+                {newRecord && (
+                  <p className="text-center text-[#55CDFC] font-black text-sm mb-2">
+                    🏆 Nouveau record !
+                  </p>
+                )}
+                <p className="text-center text-gray-400 text-xs mb-4">
+                  Score remis à zéro · Record : {highScore}
+                </p>
                 <button
-                  onClick={handleNext}
+                  onClick={advance}
                   className="w-full py-4 rounded-2xl font-black text-lg text-white shadow-md hover:opacity-90 active:scale-95 transition-all"
                   style={{ background: 'linear-gradient(135deg, #55CDFC, #F7A8B8)' }}
                 >
-                  {index + 1 >= shuffled.length ? 'Voir les résultats →' : 'Suivant →'}
+                  Continuer →
                 </button>
               </>
             )}
