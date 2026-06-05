@@ -153,6 +153,7 @@ export default function QuizGame({ people, gameTitle }: { people: Person[]; game
               fill
               className="object-cover object-top"
               priority
+              unoptimized
             />
 
             {/* Feedback overlay */}
