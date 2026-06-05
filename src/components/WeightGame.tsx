@@ -166,9 +166,9 @@ export default function WeightGame({ people }: { people: WeightPerson[] }) {
 
         {/* Card */}
         <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
-          {/* Image */}
-          <div className="relative w-full overflow-hidden" style={{ aspectRatio: '3/4', maxHeight: '380px' }}>
-            <Image src={current.src} alt={current.name} fill className="object-cover object-top" unoptimized priority />
+          {/* Image full body */}
+          <div className="relative w-full bg-gray-50" style={{ aspectRatio: '3/4', maxHeight: '420px' }}>
+            <Image src={current.src} alt={current.name} fill className="object-contain" unoptimized priority />
           </div>
 
           <div className="p-5">

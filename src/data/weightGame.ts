@@ -2,27 +2,76 @@ export type WeightPerson = {
   id: string;
   name: string;
   src: string;
-  weight: number; // kg, poids officiel public
-  hint: string;   // profession / contexte
+  weight: number; // kg officiel public
+  hint: string;
 };
 
-// Poids issus de sources officielles (infobox Wikipedia, fédérations sportives)
 export const weightPeople: WeightPerson[] = [
-  { id: 'simone-biles',     name: 'Simone Biles',        src: '/images/weight/simone-biles.jpg',     weight: 47,  hint: 'Gymnaste' },
-  { id: 'nicola-adams',     name: 'Nicola Adams',        src: '/images/weight/nicola-adams.jpg',     weight: 51,  hint: 'Boxeuse olympique' },
-  { id: 'amanda-nunes',     name: 'Amanda Nunes',        src: '/images/weight/amanda-nunes.jpg',     weight: 61,  hint: 'Championne MMA' },
-  { id: 'frankie-edgar',    name: 'Frankie Edgar',       src: '/images/weight/frankie-edgar.jpg',    weight: 62,  hint: 'Combattant MMA' },
-  { id: 'ronda-rousey',     name: 'Ronda Rousey',        src: '/images/weight/ronda-rousey.jpg',     weight: 64,  hint: 'Combattante MMA' },
-  { id: 'conor-mcgregor',   name: 'Conor McGregor',      src: '/images/weight/conor-mcgregor.jpg',   weight: 70,  hint: 'Combattant MMA' },
-  { id: 'khabib',           name: 'Khabib Nurmagomedov', src: '/images/weight/khabib.jpg',           weight: 70,  hint: 'Champion MMA' },
-  { id: 'israel-adesanya',  name: 'Israel Adesanya',     src: '/images/weight/israel-adesanya.jpg',  weight: 84,  hint: 'Combattant MMA' },
-  { id: 'usain-bolt',       name: 'Usain Bolt',          src: '/images/weight/usain-bolt.jpg',       weight: 94,  hint: 'Sprinter' },
-  { id: 'jon-jones',        name: 'Jon Jones',           src: '/images/weight/jon-jones.jpg',        weight: 108, hint: 'Combattant MMA' },
-  { id: 'tyson-fury',       name: 'Tyson Fury',          src: '/images/weight/tyson-fury.jpg',       weight: 116, hint: 'Boxeur poids lourd' },
-  { id: 'tess-holliday',    name: 'Tess Holliday',       src: '/images/weight/tess-holliday.jpg',    weight: 127, hint: 'Mannequin' },
-  { id: 'li-wenwen',        name: 'Li Wenwen',           src: '/images/weight/li-wenwen.png',        weight: 150, hint: 'Haltérophile olympique' },
-  { id: 'hakuho',           name: 'Hakuho',              src: '/images/weight/hakuho.jpg',           weight: 155, hint: 'Lutteur de sumo' },
-  { id: 'eddie-hall',       name: 'Eddie Hall',          src: '/images/weight/eddie-hall.jpg',       weight: 180, hint: 'Homme le plus fort du monde' },
-  { id: 'lasha-talakhadze', name: 'Lasha Talakhadze',    src: '/images/weight/lasha-talakhadze.jpg', weight: 183, hint: 'Haltérophile olympique' },
-  { id: 'thor-bjornsson',   name: 'Hafthor Björnsson',   src: '/images/weight/thor-bjornsson.jpg',   weight: 205, hint: 'Homme le plus fort du monde' },
+  // ── 40–60 kg ──
+  { id: 'faith-kipyegon',    weight: 43,  name: 'Faith Kipyegon',       hint: 'Coureuse de fond',          src: '/images/weight/faith-kipyegon.jpg' },
+  { id: 'simone-biles',      weight: 47,  name: 'Simone Biles',          hint: 'Gymnaste',                  src: '/images/weight/simone-biles.jpg' },
+  { id: 'nicola-adams',      weight: 51,  name: 'Nicola Adams',          hint: 'Boxeuse olympique',         src: '/images/weight/nicola-adams.jpg' },
+  { id: 'eliud-kipchoge',    weight: 52,  name: 'Eliud Kipchoge',        hint: 'Marathonien',               src: '/images/weight/eliud-kipchoge.jpg' },
+
+  // ── 60–80 kg ──
+  { id: 'amanda-nunes',      weight: 61,  name: 'Amanda Nunes',          hint: 'Championne MMA',            src: '/images/weight/amanda-nunes.jpg' },
+  { id: 'frankie-edgar',     weight: 62,  name: 'Frankie Edgar',         hint: 'Combattant MMA',            src: '/images/weight/frankie-edgar.jpg' },
+  { id: 'ronda-rousey',      weight: 64,  name: 'Ronda Rousey',          hint: 'Combattante MMA',           src: '/images/weight/ronda-rousey.jpg' },
+  { id: 'conor-mcgregor',    weight: 70,  name: 'Conor McGregor',        hint: 'Combattant MMA',            src: '/images/weight/conor-mcgregor.jpg' },
+  { id: 'khabib',            weight: 70,  name: 'Khabib Nurmagomedov',   hint: 'Champion MMA',              src: '/images/weight/khabib.jpg' },
+  { id: 'kamaru-usman',      weight: 77,  name: 'Kamaru Usman',          hint: 'Champion MMA',              src: '/images/weight/kamaru-usman.png' },
+  { id: 'lydia-valentin',    weight: 78,  name: 'Lydia Valentín',        hint: 'Haltérophile olympique',   src: '/images/weight/lydia-valentin.jpg' },
+  { id: 'lu-xiaojun',        weight: 81,  name: 'Lü Xiaojun',            hint: 'Haltérophile olympique',   src: '/images/weight/lu-xiaojun.png' },
+
+  // ── 80–100 kg ──
+  { id: 'israel-adesanya',   weight: 84,  name: 'Israel Adesanya',       hint: 'Combattant MMA',            src: '/images/weight/israel-adesanya.jpg' },
+  { id: 'tatiana-kashirina', weight: 87,  name: 'Tatiana Kashirina',     hint: 'Haltérophile olympique',   src: '/images/weight/tatiana-kashirina.jpg' },
+  { id: 'ilya-ilyin',        weight: 94,  name: 'Ilya Ilyin',            hint: 'Haltérophile olympique',   src: '/images/weight/ilya-ilyin.jpg' },
+  { id: 'usain-bolt',        weight: 94,  name: 'Usain Bolt',            hint: 'Sprinter',                  src: '/images/weight/usain-bolt.jpg' },
+
+  // ── 100–120 kg ──
+  { id: 'enho',              weight: 101, name: 'Enhō',                  hint: 'Lutteur de sumo',           src: '/images/weight/enho.jpg' },
+  { id: 'jon-jones',         weight: 108, name: 'Jon Jones',             hint: 'Combattant MMA',            src: '/images/weight/jon-jones.jpg' },
+  { id: 'stipe-miocic',      weight: 113, name: 'Stipe Miocic',          hint: 'Combattant MMA',            src: '/images/weight/stipe-miocic.jpg' },
+  { id: 'tyson-fury',        weight: 116, name: 'Tyson Fury',            hint: 'Boxeur poids lourd',        src: '/images/weight/tyson-fury.jpg' },
+  { id: 'francis-ngannou',   weight: 117, name: 'Francis Ngannou',       hint: 'Combattant MMA',            src: '/images/weight/francis-ngannou.png' },
+
+  // ── 120–150 kg ──
+  { id: 'tess-holliday',     weight: 127, name: 'Tess Holliday',         hint: 'Mannequin',                 src: '/images/weight/tess-holliday.jpg' },
+  { id: 'wakatakakage',      weight: 138, name: 'Wakatakakage',          hint: 'Lutteur de sumo',           src: '/images/weight/wakatakakage.jpg' },
+  { id: 'matthias-steiner',  weight: 145, name: 'Matthias Steiner',      hint: 'Haltérophile olympique',   src: '/images/weight/matthias-steiner.jpg' },
+  { id: 'li-wenwen',         weight: 150, name: 'Li Wenwen',             hint: 'Haltérophile olympique',   src: '/images/weight/li-wenwen.png' },
+  { id: 'hoshoryu',          weight: 150, name: 'Hōshōryū',              hint: 'Lutteur de sumo',           src: '/images/weight/hoshoryu.jpg' },
+
+  // ── 150–175 kg ──
+  { id: 'hakuho',            weight: 155, name: 'Hakuho',                hint: 'Lutteur de sumo',           src: '/images/weight/hakuho.jpg' },
+  { id: 'daieisho',          weight: 160, name: 'Daieishō',              hint: 'Lutteur de sumo',           src: '/images/weight/daieisho.jpg' },
+  { id: 'onosho',            weight: 165, name: 'Ōnoshō',               hint: 'Lutteur de sumo',           src: '/images/weight/onosho.jpg' },
+  { id: 'abi-masatora',      weight: 167, name: 'Abi',                   hint: 'Lutteur de sumo',           src: '/images/weight/abi-masatora.jpg' },
+  { id: 'shodai',            weight: 168, name: 'Shōdai',               hint: 'Lutteur de sumo',           src: '/images/weight/shodai.jpg' },
+  { id: 'takayasu',          weight: 173, name: 'Takayasu',              hint: 'Lutteur de sumo',           src: '/images/weight/takayasu.jpg' },
+  { id: 'mitakeumi',         weight: 175, name: 'Mitakeumi',             hint: 'Lutteur de sumo',           src: '/images/weight/mitakeumi.jpg' },
+  { id: 'brian-shaw',        weight: 175, name: 'Brian Shaw',            hint: 'Homme le plus fort',        src: '/images/weight/brian-shaw.jpg' },
+
+  // ── 175–200 kg ──
+  { id: 'kisenosato',        weight: 177, name: 'Kisenosato',            hint: 'Lutteur de sumo',           src: '/images/weight/kisenosato.png' },
+  { id: 'terunofuji',        weight: 176, name: 'Terunofuji',            hint: 'Lutteur de sumo',           src: '/images/weight/terunofuji.jpg' },
+  { id: 'tochinoshin',       weight: 176, name: 'Tochinoshin',           hint: 'Lutteur de sumo',           src: '/images/weight/tochinoshin.jpg' },
+  { id: 'robert-oberst',     weight: 180, name: 'Robert Oberst',         hint: 'Homme le plus fort',        src: '/images/weight/robert-oberst.png' },
+  { id: 'eddie-hall',        weight: 180, name: 'Eddie Hall',            hint: 'Homme le plus fort',        src: '/images/weight/eddie-hall.jpg' },
+  { id: 'lasha-talakhadze',  weight: 183, name: 'Lasha Talakhadze',      hint: 'Haltérophile olympique',   src: '/images/weight/lasha-talakhadze.jpg' },
+  { id: 'kaisei',            weight: 190, name: 'Kaisei',                hint: 'Lutteur de sumo',           src: '/images/weight/kaisei.jpg' },
+
+  // ── 200–250 kg ──
+  { id: 'thor-bjornsson',    weight: 205, name: 'Hafthor Björnsson',     hint: 'Homme le plus fort',        src: '/images/weight/thor-bjornsson.jpg' },
+  { id: 'ichinojo',          weight: 227, name: 'Ichinojō',              hint: 'Lutteur de sumo',           src: '/images/weight/ichinojo.jpg' },
+  { id: 'big-show',          weight: 230, name: 'Big Show',              hint: 'Catcheur professionnel',    src: '/images/weight/big-show.jpg' },
+  { id: 'akebono',           weight: 233, name: 'Akebono',               hint: 'Lutteur de sumo',           src: '/images/weight/akebono.jpg' },
+  { id: 'musashimaru',       weight: 235, name: 'Musashimaru',           hint: 'Lutteur de sumo',           src: '/images/weight/musashimaru.jpg' },
+  { id: 'andre-the-giant',   weight: 236, name: 'André le Géant',        hint: 'Catcheur / Acteur',         src: '/images/weight/andre-the-giant.jpg' },
+
+  // ── 250–300 kg ──
+  { id: 'yamamotoyama',      weight: 272, name: 'Yamamotoyama',          hint: 'Lutteur de sumo',           src: '/images/weight/yamamotoyama.jpg' },
+  { id: 'konishiki',         weight: 287, name: 'Konishiki',             hint: 'Lutteur de sumo',           src: '/images/weight/konishiki.jpg' },
+  { id: 'orora',             weight: 293, name: 'Ōrora',                 hint: 'Lutteur de sumo',           src: '/images/weight/orora.jpg' },
 ];
