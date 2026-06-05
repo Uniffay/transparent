@@ -191,6 +191,23 @@ export const games: GameDefinition[] = [
       { id: 'kang-sora',         isTrans: false, gender: 'femme', birthSex: 'femme', name: 'Kang Sora',           src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Kang_So-ra_in_July_2024.jpg/330px-Kang_So-ra_in_July_2024.jpg' },
       { id: 'zhang-ziyi',        isTrans: false, gender: 'femme', birthSex: 'femme', name: 'Zhang Ziyi',          src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Zhang_Ziyi-63357.jpg/330px-Zhang_Ziyi-63357.jpg' },
       { id: 'masami-nagasawa',   isTrans: false, gender: 'femme', birthSex: 'femme', name: 'Masami Nagasawa',     src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/11R_Tokyo_Yushun_%28Japanese_Derby%29_%28G1%2C_3yo%29_Turf_2400m_at_Tokyo_racecourse_winners%27_celemony_%E8%A1%A8%E5%BD%B0%E5%BC%8F_%2852931958413%29_Masami_Nagasawa.jpg/330px-11R_Tokyo_Yushun_%28Japanese_Derby%29_%28G1%2C_3yo%29_Turf_2400m_at_Tokyo_racecourse_winners%27_celemony_%E8%A1%A8%E5%BD%B0%E5%BC%8F_%2852931958413%29_Masami_Nagasawa.jpg' },
+
+      // ── Brésil TRANS ──
+      { id: 'indianara-siqueira',isTrans: true,  gender: 'femme', birthSex: 'homme', name: 'Indianara Siqueira',  src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Indianarae_Siqueira.jpg/330px-Indianarae_Siqueira.jpg' },
+
+      // ── Brésil CIS ──
+      { id: 'wagner-moura',      isTrans: false, gender: 'homme', birthSex: 'homme', name: 'Wagner Moura',        src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Wagner_Moura-6546_%283x4%29.jpg/330px-Wagner_Moura-6546_%283x4%29.jpg' },
+      { id: 'alice-braga',       isTrans: false, gender: 'femme', birthSex: 'femme', name: 'Alice Braga',         src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Alice_Braga_at_Queen_of_the_South_at_ATX.jpg/330px-Alice_Braga_at_Queen_of_the_South_at_ATX.jpg' },
+      { id: 'rodrigo-santoro',   isTrans: false, gender: 'homme', birthSex: 'homme', name: 'Rodrigo Santoro',     src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Rodrigo_Santoro_at_Berlinale_2025.jpg/330px-Rodrigo_Santoro_at_Berlinale_2025.jpg' },
+      { id: 'tais-araujo',       isTrans: false, gender: 'femme', birthSex: 'femme', name: 'Taís Araújo',         src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Ta%C3%ADs_Ara%C3%BAjo_%40_TEDxSaoPaulo_2017_01_%28cropped%29.JPG/330px-Ta%C3%ADs_Ara%C3%BAjo_%40_TEDxSaoPaulo_2017_01_%28cropped%29.JPG' },
+      { id: 'lazaro-ramos',      isTrans: false, gender: 'homme', birthSex: 'homme', name: 'Lázaro Ramos',        src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/O_Topo_da_Montanha_Tom_Brasil_%28L%C3%A1zaro_Ramos%29_%28cropped%29.jpg/330px-O_Topo_da_Montanha_Tom_Brasil_%28L%C3%A1zaro_Ramos%29_%28cropped%29.jpg' },
+      { id: 'seu-jorge',         isTrans: false, gender: 'homme', birthSex: 'homme', name: 'Seu Jorge',           src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Seu_Jorge.jpg/330px-Seu_Jorge.jpg' },
+      { id: 'leticia-colin',     isTrans: false, gender: 'femme', birthSex: 'femme', name: 'Letícia Colin',       src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Let%C3%ADcia_Colin_Lady_Night.jpg/330px-Let%C3%ADcia_Colin_Lady_Night.jpg' },
+      { id: 'camila-pitanga',    isTrans: false, gender: 'femme', birthSex: 'femme', name: 'Camila Pitanga',      src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Camila_Pitanga_at_2025_Cannes_Red_Carpet_for_O_Agente_Secreto_2.jpg/330px-Camila_Pitanga_at_2025_Cannes_Red_Carpet_for_O_Agente_Secreto_2.jpg' },
+      { id: 'debora-falabella',  isTrans: false, gender: 'femme', birthSex: 'femme', name: 'Débora Falabella',    src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/D%C3%A9bora_Falabella_2024.jpg/330px-D%C3%A9bora_Falabella_2024.jpg' },
+      { id: 'fernanda-montenegro',isTrans: false,gender: 'femme', birthSex: 'femme', name: 'Fernanda Montenegro',  src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Fernanda_Montenegro2019.jpg/330px-Fernanda_Montenegro2019.jpg' },
+      { id: 'sonia-braga',       isTrans: false, gender: 'femme', birthSex: 'femme', name: 'Sônia Braga',         src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/S%C3%B4nia_Braga_-_F%C3%AAnix_2016.png/330px-S%C3%B4nia_Braga_-_F%C3%AAnix_2016.png' },
+      { id: 'caetano-veloso',    isTrans: false, gender: 'homme', birthSex: 'homme', name: 'Caetano Veloso',      src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Caetano_Veloso_%28cropped%29.jpg/330px-Caetano_Veloso_%28cropped%29.jpg' },
     ],
   },
   {
