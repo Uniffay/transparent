@@ -15,8 +15,8 @@ const pacifico = Pacifico({
 });
 
 export const metadata: Metadata = {
-  title: 'TransParent',
-  description: 'Pouvez-vous deviner ? Probablement pas.',
+  title: 'UniGames',
+  description: 'Des jeux pour tout le monde ♡',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

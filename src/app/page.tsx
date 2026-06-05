@@ -1,7 +1,45 @@
 import Link from 'next/link';
-import { games } from '@/data/games';
 
 const hearts = ['♡', '♥', '💕', '♡', '♥', '💗'];
+
+const games = [
+  {
+    id: 'celebrities',
+    title: 'TransParent',
+    description: 'Trans ou pas trans ? Enchaîne les bonnes réponses sans te tromper.',
+    available: true,
+    emoji: '⚧',
+    tag: 'Streak',
+    accent: 'from-[#55CDFC] to-[#F7A8B8]',
+  },
+  {
+    id: null,
+    title: 'Bientôt...',
+    description: 'Un nouveau jeu arrive.',
+    available: false,
+    emoji: '🎮',
+    tag: null,
+    accent: null,
+  },
+  {
+    id: null,
+    title: 'Bientôt...',
+    description: 'Un nouveau jeu arrive.',
+    available: false,
+    emoji: '🎮',
+    tag: null,
+    accent: null,
+  },
+  {
+    id: null,
+    title: 'Bientôt...',
+    description: 'Un nouveau jeu arrive.',
+    available: false,
+    emoji: '🎮',
+    tag: null,
+    accent: null,
+  },
+];
 
 export default function HomePage() {
   return (
@@ -11,7 +49,7 @@ export default function HomePage() {
         background: 'linear-gradient(135deg, #FFB7D5 0%, #FF69B4 40%, #E91E8C 100%)',
       }}
     >
-      {/* Floating hearts (decorative) */}
+      {/* Floating hearts */}
       <span className="absolute select-none pointer-events-none text-2xl text-pink-300 animate-float-1" style={{ top: '8%', left: '5%' }}>{hearts[0]}</span>
       <span className="absolute select-none pointer-events-none text-3xl text-pink-400 animate-float-2" style={{ top: '15%', right: '8%' }}>{hearts[1]}</span>
       <span className="absolute select-none pointer-events-none text-xl text-pink-200 animate-float-3" style={{ top: '40%', left: '3%' }}>{hearts[2]}</span>
@@ -20,52 +58,60 @@ export default function HomePage() {
       <span className="absolute select-none pointer-events-none text-xl text-pink-200 animate-float-6" style={{ top: '85%', right: '10%' }}>{hearts[5]}</span>
 
       {/* Header */}
-      <div className="text-center mb-12 z-10">
+      <div className="text-center mb-10 z-10">
         <h1
-          className="text-6xl md:text-7xl text-white drop-shadow-lg mb-3"
+          className="text-6xl md:text-7xl text-white drop-shadow-lg mb-2"
           style={{ fontFamily: 'var(--font-pacifico)' }}
         >
-          TransParent
+          UniGames
         </h1>
-        <p className="text-white/90 text-xl font-semibold tracking-wide">
-          uwu ~ pouvez-vous deviner ? ♡
-        </p>
-        <p className="text-white/70 text-sm mt-2">
-          Probablement pas... et c&apos;est tout le message 🌸
+        <p className="text-white/80 text-lg font-semibold tracking-wide">
+          uwu ~ des jeux pour tout le monde ♡
         </p>
       </div>
 
       {/* Game grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 w-full max-w-2xl z-10">
-        {games.map((game) =>
-          game.available ? (
+        {games.map((game, i) =>
+          game.available && game.id ? (
             <Link
-              key={game.id}
+              key={i}
               href={`/game/${game.id}`}
-              className="group bg-white/90 backdrop-blur rounded-3xl p-6 shadow-lg border-2 border-pink-200 hover:border-pink-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col gap-2"
+              className="group bg-white/90 backdrop-blur rounded-3xl overflow-hidden shadow-lg border-2 border-pink-200 hover:border-pink-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col"
             >
-              <div className="text-4xl">{game.emoji}</div>
-              <h2 className="text-xl font-black text-pink-600 group-hover:text-pink-700">
-                {game.title}
-              </h2>
-              <p className="text-pink-400 text-sm">{game.description}</p>
-              <div className="mt-2">
-                <span className="inline-block bg-pink-500 text-white text-xs font-bold px-3 py-1 rounded-full group-hover:bg-pink-600 transition-colors">
-                  Jouer ♡
-                </span>
+              {/* Accent bar */}
+              <div className={`h-1.5 w-full bg-gradient-to-r ${game.accent}`} />
+              <div className="p-6 flex flex-col gap-2 flex-1">
+                <div className="flex items-start justify-between">
+                  <span className="text-4xl">{game.emoji}</span>
+                  {game.tag && (
+                    <span className={`text-[10px] font-black uppercase tracking-widest text-white px-2 py-0.5 rounded-full bg-gradient-to-r ${game.accent}`}>
+                      {game.tag}
+                    </span>
+                  )}
+                </div>
+                <h2 className="text-xl font-black text-gray-800 group-hover:text-pink-600 transition-colors">
+                  {game.title}
+                </h2>
+                <p className="text-gray-500 text-sm flex-1">{game.description}</p>
+                <div className="mt-3">
+                  <span className="inline-block bg-pink-500 text-white text-xs font-bold px-4 py-1.5 rounded-full group-hover:bg-pink-600 transition-colors">
+                    Jouer ♡
+                  </span>
+                </div>
               </div>
             </Link>
           ) : (
             <div
-              key={game.id}
-              className="bg-white/40 backdrop-blur rounded-3xl p-6 border-2 border-white/30 flex flex-col gap-2 opacity-60 cursor-not-allowed"
+              key={i}
+              className="bg-white/20 backdrop-blur rounded-3xl p-6 border-2 border-white/20 flex flex-col gap-2 opacity-50 cursor-not-allowed"
             >
-              <div className="text-4xl grayscale">{game.emoji}</div>
-              <h2 className="text-xl font-black text-white/70">{game.title}</h2>
-              <p className="text-white/50 text-sm">{game.description}</p>
+              <div className="text-4xl grayscale opacity-50">{game.emoji}</div>
+              <h2 className="text-lg font-black text-white/60">{game.title}</h2>
+              <p className="text-white/40 text-sm">{game.description}</p>
               <div className="mt-2">
-                <span className="inline-block bg-white/30 text-white/60 text-xs font-bold px-3 py-1 rounded-full">
-                  Bientôt... 🔒
+                <span className="inline-block bg-white/20 text-white/40 text-xs font-bold px-3 py-1 rounded-full">
+                  Bientôt 🔒
                 </span>
               </div>
             </div>
@@ -73,10 +119,7 @@ export default function HomePage() {
         )}
       </div>
 
-      {/* Footer */}
-      <p className="mt-12 text-white/50 text-xs z-10 text-center max-w-sm">
-        Les personnes trans sont invisibles. Laissez-les tranquilles. ♡
-      </p>
+      <p className="mt-10 text-white/40 text-xs z-10">UniGames ♡</p>
     </main>
   );
 }
