@@ -139,8 +139,8 @@ export default function WeightGame({ people }: { people: WeightPerson[] }) {
   }
 
   const diff = guess - current.weight;
-  const guessPercent = ((guess - 40) / (250 - 40)) * 100;
-  const actualPercent = ((current.weight - 40) / (250 - 40)) * 100;
+  const guessPercent = ((guess - 40) / (300 - 40)) * 100;
+  const actualPercent = ((current.weight - 40) / (300 - 40)) * 100;
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen px-6" style={{ background: bg }}>
@@ -189,18 +189,18 @@ export default function WeightGame({ people }: { people: WeightPerson[] }) {
                 {/* Slider */}
                 <input
                   type="range"
-                  min={40} max={250} step={1}
+                  min={40} max={300} step={1}
                   value={guess}
                   onChange={(e) => setGuess(Number(e.target.value))}
                   className="w-full h-3 rounded-full appearance-none cursor-pointer mb-2"
                   style={{
-                    background: `linear-gradient(to right, #7C3AED ${((guess - 40) / 210) * 100}%, #E5E7EB ${((guess - 40) / 210) * 100}%)`,
+                    background: `linear-gradient(to right, #7C3AED ${((guess - 40) / 260) * 100}%, #E5E7EB ${((guess - 40) / 260) * 100}%)`,
                     accentColor: '#7C3AED',
                   }}
                 />
                 <div className="flex justify-between text-xs text-gray-300 mb-4">
                   <span>40 kg</span>
-                  <span>250 kg</span>
+                  <span>300 kg</span>
                 </div>
 
                 <button
@@ -245,7 +245,7 @@ export default function WeightGame({ people }: { people: WeightPerson[] }) {
                     <span><span className="inline-block w-2 h-2 rounded-full bg-green-400 mr-1" />Réel</span>
                     <span><span className="inline-block w-2 h-2 rounded-full mr-1" style={{ background: '#7C3AED' }} />Vous</span>
                   </span>
-                  <span>250 kg</span>
+                  <span>300 kg</span>
                 </div>
 
                 {/* Points */}
