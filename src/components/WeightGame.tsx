@@ -177,7 +177,9 @@ export default function WeightGame({ people }: { people: WeightPerson[] }) {
                 {/* Hint */}
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-xs text-gray-400 font-semibold uppercase tracking-widest">{current.hint}</span>
-                  <span className="text-xs text-gray-300">Qui est-ce ?</span>
+                  <span className="text-xs font-bold" style={{ color: '#7C3AED' }}>
+                    📏 {(current.height / 100).toFixed(2).replace('.', ',')} m
+                  </span>
                 </div>
 
                 {/* Weight display */}
