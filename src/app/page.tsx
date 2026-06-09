@@ -23,7 +23,7 @@ const games = [
   },
   {
     id: 'paggaie',
-    title: 'Gay ou Pagaie',
+    title: 'Gay ou Pagaie 🛶',
     description: 'Gay ou pas gay ? Enchaîne les bonnes réponses. Spoiler : on ne peut pas deviner.',
     available: true,
     emoji: '🏳️‍🌈',

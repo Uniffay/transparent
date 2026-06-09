@@ -94,7 +94,7 @@ export default function GayQuizGame({ people }: { people: GayPerson[] }) {
         <div className="z-10 bg-white/90 rounded-3xl p-10 shadow-xl max-w-md w-full">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/pagaie.svg" alt="Pagaie multicolore" className="w-16 h-16 mx-auto mb-4" />
-          <h1 className="text-3xl font-black mb-2" style={{ color: '#750787' }}>Gay ou Pagaie</h1>
+          <h1 className="text-3xl font-black mb-2" style={{ color: '#750787' }}>Gay ou Pagaie 🛶</h1>
           <p className="text-gray-600 text-sm mb-2">
             Gay ou pas gay ? Enchaîne les bonnes réponses.
           </p>
@@ -183,7 +183,7 @@ export default function GayQuizGame({ people }: { people: GayPerson[] }) {
                     className="py-4 rounded-2xl font-black text-lg text-white shadow-md hover:scale-[1.03] active:scale-95 transition-all"
                     style={{ background: 'linear-gradient(135deg, #64748b, #475569)' }}
                   >
-                    Pas gay
+                    🛶 Pagaie
                   </button>
                 </div>
               </>
