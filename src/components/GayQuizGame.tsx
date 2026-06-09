@@ -92,8 +92,9 @@ export default function GayQuizGame({ people }: { people: GayPerson[] }) {
       <div className="flex flex-col items-center justify-center min-h-screen px-6 text-center" style={{ background: rainbowBackground }}>
         <RainbowDecorations />
         <div className="z-10 bg-white/90 rounded-3xl p-10 shadow-xl max-w-md w-full">
-          <div className="text-5xl mb-4">🏳️‍🌈</div>
-          <h1 className="text-3xl font-black mb-2" style={{ color: '#750787' }}>Gay ou Paggaie</h1>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/pagaie.svg" alt="Pagaie multicolore" className="w-16 h-16 mx-auto mb-4" />
+          <h1 className="text-3xl font-black mb-2" style={{ color: '#750787' }}>Gay ou Pagaie</h1>
           <p className="text-gray-600 text-sm mb-2">
             Gay ou pas gay ? Enchaîne les bonnes réponses.
           </p>

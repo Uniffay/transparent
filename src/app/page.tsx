@@ -23,7 +23,7 @@ const games = [
   },
   {
     id: 'paggaie',
-    title: 'Gay ou Paggaie',
+    title: 'Gay ou Pagaie',
     description: 'Gay ou pas gay ? Enchaîne les bonnes réponses. Spoiler : on ne peut pas deviner.',
     available: true,
     emoji: '🏳️‍🌈',
@@ -83,7 +83,12 @@ export default function HomePage() {
               <div className={`h-1.5 w-full bg-gradient-to-r ${game.accent}`} />
               <div className="p-6 flex flex-col gap-2 flex-1">
                 <div className="flex items-start justify-between">
-                  <span className="text-4xl">{game.emoji}</span>
+                  {game.id === 'paggaie' ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src="/pagaie.svg" alt="Pagaie multicolore" className="w-11 h-11" />
+                  ) : (
+                    <span className="text-4xl">{game.emoji}</span>
+                  )}
                   {game.tag && (
                     <span className={`text-[10px] font-black uppercase tracking-widest text-white px-2 py-0.5 rounded-full bg-gradient-to-r ${game.accent}`}>
                       {game.tag}
