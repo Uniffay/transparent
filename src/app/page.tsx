@@ -89,7 +89,7 @@ export default function HomePage() {
       </div>
 
       {/* Game grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 w-full max-w-2xl z-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 w-full max-w-4xl z-10">
         {games.map((game, i) =>
           game.available && game.id ? (
             <Link
