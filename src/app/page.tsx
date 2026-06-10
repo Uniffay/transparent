@@ -31,13 +31,13 @@ const games = [
     accent: 'from-[#E40303] to-[#750787]',
   },
   {
-    id: null,
-    title: 'Bientôt...',
-    description: 'Un nouveau jeu arrive.',
-    available: false,
-    emoji: '🎮',
-    tag: null,
-    accent: null,
+    id: 'politique',
+    title: 'Politiquement Correct',
+    description: 'Gauche ou droite ? Devine le bord politique. Spoiler : ça ne se voit pas sur un visage.',
+    available: true,
+    emoji: '🗳️',
+    tag: 'Streak',
+    accent: 'from-[#C9243F] to-[#1E50A0]',
   },
 ];
 
