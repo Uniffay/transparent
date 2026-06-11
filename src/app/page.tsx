@@ -44,7 +44,7 @@ const games = [
     title: 'Link in Bio ?',
     description: 'A-t-il/elle un OnlyFans ou un MYM ? Devine. Spoiler : ça ne se voit pas, et aucun souci à ça.',
     available: true,
-    emoji: '🔗',
+    emoji: '🥵',
     tag: 'Streak',
     accent: 'from-[#00AEEF] to-[#6D5BFF]',
   },
