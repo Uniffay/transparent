@@ -84,6 +84,33 @@ const games = [
     tag: 'Streak',
     accent: 'from-[#0D9488] to-[#7C3AED]',
   },
+  {
+    id: null,
+    title: 'Bientôt...',
+    description: 'Un nouveau jeu arrive.',
+    available: false,
+    emoji: '🎮',
+    tag: null,
+    accent: null,
+  },
+  {
+    id: null,
+    title: 'Bientôt...',
+    description: 'Un nouveau jeu arrive.',
+    available: false,
+    emoji: '🎮',
+    tag: null,
+    accent: null,
+  },
+  {
+    id: null,
+    title: 'Bientôt...',
+    description: 'Un nouveau jeu arrive.',
+    available: false,
+    emoji: '🎮',
+    tag: null,
+    accent: null,
+  },
 ];
 
 export default function HomePage() {
