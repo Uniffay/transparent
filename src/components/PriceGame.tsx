@@ -97,7 +97,7 @@ export default function PriceGame({ items }: { items: PriceItem[] }) {
       <div className="flex flex-col items-center justify-center min-h-screen px-6 text-center" style={{ background: bg }}>
         <div className="bg-white/95 rounded-3xl p-10 shadow-xl max-w-md w-full">
           <div className="text-5xl mb-4">🏷️</div>
-          <h1 className="text-3xl font-black mb-2" style={{ color: '#0F7B3F' }}>Juste Prix</h1>
+          <h1 className="text-3xl font-black mb-2" style={{ color: '#0F7B3F' }}>Cash-ta-strophe</h1>
           <p className="text-gray-600 text-sm mb-2">
             Des objets insolites vraiment vendus. Devine leur prix !
           </p>

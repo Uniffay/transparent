@@ -50,7 +50,7 @@ const games = [
   },
   {
     id: 'juste-prix',
-    title: 'Juste Prix',
+    title: 'Cash-ta-strophe',
     description: 'Des objets insolites vraiment vendus. Devine leur prix, au plus proche !',
     available: true,
     emoji: '🏷️',
