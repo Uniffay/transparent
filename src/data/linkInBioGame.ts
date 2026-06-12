@@ -26,7 +26,7 @@ export const linkPeople: LinkPerson[] = [
   { id: 'farrah-abraham', name: 'Farrah Abraham', hasAccount: true, src: '/images/linkinbio/farrah-abraham.jpg' },
   { id: 'mandy-rose', name: 'Mandy Rose', hasAccount: true, src: '/images/linkinbio/mandy-rose.jpg' },
   { id: 'bart-swings', name: 'Bart Swings', hasAccount: true, src: '/images/linkinbio/bart-swings.jpg' },
-  { id: 'robeisy-ramirez', name: 'Robeisy Ramírez', hasAccount: true, src: '/images/linkinbio/robeisy-ramirez.jpg' },
+  { id: 'tyler-posey', name: 'Tyler Posey', hasAccount: true, src: '/images/linkinbio/tyler-posey.jpg' },
   { id: 'daniel-goodfellow', name: 'Daniel Goodfellow', hasAccount: true, src: '/images/linkinbio/daniel-goodfellow.jpg' },
   { id: 'noah-williams', name: 'Noah Williams', hasAccount: true, src: '/images/linkinbio/noah-williams.jpg' },
   { id: 'matthew-dixon', name: 'Matthew Dixon', hasAccount: true, src: '/images/linkinbio/matthew-dixon.jpg' },
