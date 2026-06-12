@@ -96,7 +96,7 @@ export default function PriceGame({ items }: { items: PriceItem[] }) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen px-6 text-center" style={{ background: bg }}>
         <div className="bg-white/95 rounded-3xl p-10 shadow-xl max-w-md w-full">
-          <div className="text-5xl mb-4">🏷️</div>
+          <div className="text-5xl mb-4">💸</div>
           <h1 className="text-3xl font-black mb-2" style={{ color: '#0F7B3F' }}>Cash-ta-strophe</h1>
           <p className="text-gray-600 text-sm mb-2">
             Des objets insolites vraiment vendus. Devine leur prix !
@@ -110,7 +110,7 @@ export default function PriceGame({ items }: { items: PriceItem[] }) {
             className="w-full text-white font-black text-lg py-4 rounded-2xl hover:opacity-90 transition-all shadow-md"
             style={{ background: 'linear-gradient(135deg, #0F7B3F, #16A34A)' }}
           >
-            Commencer 🏷️
+            Commencer 💸
           </button>
         </div>
       </div>
@@ -221,7 +221,7 @@ export default function PriceGame({ items }: { items: PriceItem[] }) {
                   className="w-full py-4 rounded-2xl font-black text-lg text-white shadow-md hover:opacity-90 active:scale-95 transition-all"
                   style={{ background: 'linear-gradient(135deg, #0F7B3F, #16A34A)' }}
                 >
-                  Confirmer 🏷️
+                  Confirmer 💸
                 </button>
               </>
             ) : (
