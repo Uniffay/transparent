@@ -49,13 +49,13 @@ const games = [
     accent: 'from-[#00AEEF] to-[#6D5BFF]',
   },
   {
-    id: null,
-    title: 'Bientôt...',
-    description: 'Un nouveau jeu arrive.',
-    available: false,
-    emoji: '🎮',
-    tag: null,
-    accent: null,
+    id: 'juste-prix',
+    title: 'Juste Prix',
+    description: 'Des objets insolites vraiment vendus. Devine leur prix, au plus proche !',
+    available: true,
+    emoji: '🏷️',
+    tag: 'Score',
+    accent: 'from-[#0F7B3F] to-[#16A34A]',
   },
 ];
 
