@@ -76,13 +76,13 @@ const games = [
     accent: 'from-[#B91C1C] to-[#1D4ED8]',
   },
   {
-    id: null,
-    title: 'Bientôt...',
-    description: 'Un nouveau jeu arrive.',
-    available: false,
-    emoji: '🎮',
-    tag: null,
-    accent: null,
+    id: 'le-bon-match',
+    title: 'Le bon match ?',
+    description: 'Une image, 4 propositions. Clique sur la bonne. (Placeholder — à remplir.)',
+    available: true,
+    emoji: '🧩',
+    tag: 'Streak',
+    accent: 'from-[#0D9488] to-[#7C3AED]',
   },
 ];
 
