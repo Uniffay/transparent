@@ -77,7 +77,7 @@ const games = [
   },
   {
     id: 'le-bon-match',
-    title: 'Le bon match ?',
+    title: 'Happy Feets',
     description: 'Une image, 4 propositions. Clique sur la bonne. (Placeholder — à remplir.)',
     available: true,
     emoji: '🧩',

@@ -98,7 +98,7 @@ export default function MatchQuizGame({ rounds }: { rounds: MatchRound[] }) {
       <div className="flex flex-col items-center justify-center min-h-screen px-6 text-center" style={{ background: bg }}>
         <div className="z-10 bg-white/95 rounded-3xl p-10 shadow-xl max-w-md w-full">
           <div className="text-5xl mb-4">🧩</div>
-          <h1 className="text-3xl font-black mb-2" style={{ color: '#0D9488' }}>Le bon match ?</h1>
+          <h1 className="text-3xl font-black mb-2" style={{ color: '#0D9488' }}>Happy Feets</h1>
           <p className="text-gray-600 text-sm mb-2">
             Une image s&apos;affiche. Clique sur la bonne réponse parmi les 4.
           </p>
