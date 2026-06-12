@@ -57,6 +57,33 @@ const games = [
     tag: 'Score',
     accent: 'from-[#0F7B3F] to-[#16A34A]',
   },
+  {
+    id: 'theoreme-fontaine',
+    title: 'Théorême Fontaine',
+    description: 'Option A ou Option B ? Enchaîne les bonnes réponses sans te tromper.',
+    available: true,
+    emoji: '🔮',
+    tag: 'Streak',
+    accent: 'from-[#2563EB] to-[#EA580C]',
+  },
+  {
+    id: null,
+    title: 'Bientôt...',
+    description: 'Un nouveau jeu arrive.',
+    available: false,
+    emoji: '🎮',
+    tag: null,
+    accent: null,
+  },
+  {
+    id: null,
+    title: 'Bientôt...',
+    description: 'Un nouveau jeu arrive.',
+    available: false,
+    emoji: '🎮',
+    tag: null,
+    accent: null,
+  },
 ];
 
 export default function HomePage() {
