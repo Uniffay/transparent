@@ -103,7 +103,7 @@ export default function QuoteQuizGame({ quotes }: { quotes: Quote[] }) {
       <div className="flex flex-col items-center justify-center min-h-screen px-6 text-center" style={{ background: bg }}>
         <div className="z-10 bg-white/95 rounded-3xl p-10 shadow-xl max-w-md w-full">
           <div className="text-5xl mb-4">🎙️</div>
-          <h1 className="text-3xl font-black mb-2 text-gray-900">Trump, Hitler ou Autre ?</h1>
+          <h1 className="text-3xl font-black mb-2 text-gray-900">Cit&apos;à toi de jouer</h1>
           <p className="text-gray-600 text-sm mb-2">
             Une citation s&apos;affiche. Qui l&apos;a vraiment dite ?
           </p>

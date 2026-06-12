@@ -68,7 +68,7 @@ const games = [
   },
   {
     id: 'qui-la-dit',
-    title: 'Trump, Hitler ou Autre ?',
+    title: 'Cit\'à toi de jouer',
     description: 'Une citation réelle s\'affiche. Devine qui l\'a dite : Trump, Hitler ou quelqu\'un d\'autre.',
     available: true,
     emoji: '🎙️',
