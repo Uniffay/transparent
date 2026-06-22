@@ -2,7 +2,18 @@ import Link from 'next/link';
 
 const hearts = ['♡', '♥', '💕', '♡', '♥', '💗'];
 
-const games = [
+type Tile = {
+  id: string | null;
+  href?: string;
+  title: string;
+  description: string;
+  available: boolean;
+  emoji: string;
+  tag: string | null;
+  accent: string | null;
+};
+
+const games: Tile[] = [
   {
     id: 'celebrities',
     title: 'TransParent',
@@ -60,9 +71,9 @@ const games = [
   {
     id: 'theoreme-fontaine',
     title: 'Théorême Fontaine',
-    description: 'Option A ou Option B ? Enchaîne les bonnes réponses sans te tromper.',
+    description: 'Avant ou Après ? La star est-elle ado ou adulte sur la photo ? Enchaîne les bonnes réponses.',
     available: true,
-    emoji: '🔞',
+    emoji: '⏳',
     tag: 'Streak',
     accent: 'from-[#2563EB] to-[#EA580C]',
   },
@@ -86,12 +97,13 @@ const games = [
   },
   {
     id: null,
-    title: 'Bientôt...',
-    description: 'Un nouveau jeu arrive.',
-    available: false,
-    emoji: '🎮',
-    tag: null,
-    accent: null,
+    href: 'https://thegang-production.up.railway.app/',
+    title: 'The Gang',
+    description: 'Rejoins la bande et tente le coup. Ça se passe sur le site The Gang.',
+    available: true,
+    emoji: '🃏',
+    tag: 'Externe',
+    accent: 'from-[#1F2937] to-[#D97706]',
   },
   {
     id: null,
@@ -144,13 +156,31 @@ export default function HomePage() {
 
       {/* Game grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 w-full max-w-4xl z-10">
-        {games.map((game, i) =>
-          game.available && game.id ? (
-            <Link
-              key={i}
-              href={`/game/${game.id}`}
-              className="group bg-white/90 backdrop-blur rounded-3xl overflow-hidden shadow-lg border-2 border-pink-200 hover:border-pink-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col"
-            >
+        {games.map((game, i) => {
+          // Indisponible → carte "Bientôt"
+          if (!game.available || (!game.id && !game.href)) {
+            return (
+              <div
+                key={i}
+                className="bg-white/20 backdrop-blur rounded-3xl p-6 border-2 border-white/20 flex flex-col gap-2 opacity-50 cursor-not-allowed"
+              >
+                <div className="text-4xl grayscale opacity-50">{game.emoji}</div>
+                <h2 className="text-lg font-black text-white/60">{game.title}</h2>
+                <p className="text-white/40 text-sm">{game.description}</p>
+                <div className="mt-2">
+                  <span className="inline-block bg-white/20 text-white/40 text-xs font-bold px-3 py-1 rounded-full">
+                    Bientôt 🔒
+                  </span>
+                </div>
+              </div>
+            );
+          }
+
+          const cardClass =
+            'group bg-white/90 backdrop-blur rounded-3xl overflow-hidden shadow-lg border-2 border-pink-200 hover:border-pink-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col';
+
+          const inner = (
+            <>
               {/* Accent bar */}
               <div className={`h-1.5 w-full bg-gradient-to-r ${game.accent}`} />
               <div className="p-6 flex flex-col gap-2 flex-1">
@@ -173,27 +203,35 @@ export default function HomePage() {
                 <p className="text-gray-500 text-sm flex-1">{game.description}</p>
                 <div className="mt-3">
                   <span className="inline-block bg-pink-500 text-white text-xs font-bold px-4 py-1.5 rounded-full group-hover:bg-pink-600 transition-colors">
-                    Jouer ♡
+                    {game.href ? 'Jouer ↗' : 'Jouer ♡'}
                   </span>
                 </div>
               </div>
+            </>
+          );
+
+          // Lien externe → nouvel onglet
+          if (game.href) {
+            return (
+              <a
+                key={i}
+                href={game.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cardClass}
+              >
+                {inner}
+              </a>
+            );
+          }
+
+          // Jeu interne
+          return (
+            <Link key={i} href={`/game/${game.id}`} className={cardClass}>
+              {inner}
             </Link>
-          ) : (
-            <div
-              key={i}
-              className="bg-white/20 backdrop-blur rounded-3xl p-6 border-2 border-white/20 flex flex-col gap-2 opacity-50 cursor-not-allowed"
-            >
-              <div className="text-4xl grayscale opacity-50">{game.emoji}</div>
-              <h2 className="text-lg font-black text-white/60">{game.title}</h2>
-              <p className="text-white/40 text-sm">{game.description}</p>
-              <div className="mt-2">
-                <span className="inline-block bg-white/20 text-white/40 text-xs font-bold px-3 py-1 rounded-full">
-                  Bientôt 🔒
-                </span>
-              </div>
-            </div>
-          )
-        )}
+          );
+        })}
       </div>
 
       <p className="mt-10 text-white/40 text-xs z-10">UniGames ♡</p>

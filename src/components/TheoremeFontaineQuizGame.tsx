@@ -98,10 +98,11 @@ export default function TheoremeFontaineQuizGame({ items }: { items: FontaineIte
     return (
       <div className="flex flex-col items-center justify-center min-h-screen px-6 text-center" style={{ background: bg }}>
         <div className="z-10 bg-white/95 rounded-3xl p-10 shadow-xl max-w-md w-full">
-          <div className="text-5xl mb-4">🔞</div>
+          <div className="text-5xl mb-4">⏳</div>
           <h1 className="text-3xl font-black mb-2 text-gray-800">Théorême Fontaine</h1>
           <p className="text-gray-600 text-sm mb-2">
-            Option A ou Option B ? Enchaîne les bonnes réponses.
+            La star est-elle sur une photo <span className="font-bold" style={{ color: A_COLOR }}>Avant</span> (ado)
+            ou <span className="font-bold" style={{ color: B_COLOR }}>Après</span> (adulte) ? Enchaîne les bonnes réponses.
           </p>
           <p className="text-gray-500 text-sm mb-2">
             Une erreur = score remis à zéro.
@@ -118,7 +119,7 @@ export default function TheoremeFontaineQuizGame({ items }: { items: FontaineIte
             className="w-full text-white font-black text-lg py-4 rounded-2xl hover:opacity-90 hover:scale-[1.02] transition-all shadow-md"
             style={{ background: `linear-gradient(90deg, ${A_COLOR}, ${B_COLOR})` }}
           >
-            Commencer 🔞
+            Commencer ⏳
           </button>
         </div>
       </div>
@@ -152,7 +153,7 @@ export default function TheoremeFontaineQuizGame({ items }: { items: FontaineIte
           <div className="relative w-full overflow-hidden" style={{ aspectRatio: '3/4', maxHeight: '420px' }}>
             <Image
               src={current.src}
-              alt="Option A ou B ?"
+              alt="Avant ou après ?"
               fill
               className="object-cover object-top"
               priority
@@ -172,7 +173,7 @@ export default function TheoremeFontaineQuizGame({ items }: { items: FontaineIte
             {phase === 'playing' ? (
               <>
                 <p className="text-center text-gray-500 text-sm mb-4 font-semibold">
-                  Option A ou Option B ?
+                  Avant ou Après ?
                 </p>
                 <div className="grid grid-cols-2 gap-3">
                   <button
@@ -180,30 +181,36 @@ export default function TheoremeFontaineQuizGame({ items }: { items: FontaineIte
                     className="py-4 rounded-2xl font-black text-lg text-white shadow-md hover:scale-[1.03] active:scale-95 transition-all"
                     style={{ background: A_COLOR }}
                   >
-                    Option A
+                    Avant
                   </button>
                   <button
                     onClick={() => handleGuess(false)}
                     className="py-4 rounded-2xl font-black text-lg text-white shadow-md hover:scale-[1.03] active:scale-95 transition-all"
                     style={{ background: B_COLOR }}
                   >
-                    Option B
+                    Après
                   </button>
                 </div>
               </>
             ) : lastCorrect ? (
-              <p className="text-center text-green-500 font-black text-xl py-2">
-                Correct ! +1 ✓
-              </p>
+              <div className="py-2 text-center">
+                <p className="text-green-500 font-black text-xl">Correct ! +1 ✓</p>
+                <p className="text-gray-500 text-sm mt-1">
+                  {current.name} ·{' '}
+                  <span className="font-bold" style={{ color: current.isOptionA ? A_COLOR : B_COLOR }}>
+                    {current.isOptionA ? 'Avant' : 'Après'}
+                  </span>
+                </p>
+              </div>
             ) : (
               <>
                 <p className="text-center font-black text-xl text-red-400 mb-1">
                   Raté !
                 </p>
                 <p className="text-center text-gray-500 text-sm mb-1">
-                  C&apos;était{' '}
+                  {current.name}, c&apos;était{' '}
                   <span className="inline-block text-white text-xs font-bold px-2 py-0.5 rounded-full" style={{ background: current.isOptionA ? A_COLOR : B_COLOR }}>
-                    {current.isOptionA ? 'Option A' : 'Option B'}
+                    {current.isOptionA ? 'Avant' : 'Après'}
                   </span>
                 </p>
                 {newRecord && (
