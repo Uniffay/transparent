@@ -16,6 +16,11 @@ photos listées ci-dessous ; celles de `choice/` sont redimensionnées (800px).
 - choice : « Florence and the Machine 12 09 2018 -15 (39744301703).jpg »
   https://commons.wikimedia.org/wiki/File:Florence_and_the_Machine_12_09_2018_-15_(39744301703).jpg
 
+## Retirées le 4 juillet 2026 (équilibrage)
+Simone Biles et Clarisse Agbegnenou : distracteurs tirés au hasard → la couleur
+de peau rendait la réponse évidente. Sources conservées ci-dessous si on les
+remet un jour (ex. avec des distracteurs appariés par carnation).
+
 ## Simone Biles (gymnaste, pieds nus sur la poutre)
 - feets : recadrage de « Simone Biles, na prova final da trave nos Jogos Olímpicos Rio 2016.jpg »
   https://commons.wikimedia.org/wiki/File:Simone_Biles,_na_prova_final_da_trave_nos_Jogos_Ol%C3%ADmpicos_Rio_2016.jpg
