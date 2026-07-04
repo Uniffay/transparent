@@ -45,6 +45,15 @@ Cesária Évora et Sandie Shaw (pieds jamais visibles), Nadia Comaneci (chausson
 Rebeca Andrade (demi-pointes), Loreen (trop loin), Laure Manaudou (portrait seul),
 AURORA / Camille / Zaz (rien sur Commons).
 
+## Lot du 4 juillet 2026 (28 personnes)
+- feets : photos fournies par Quentin (diaporamas « pieds de stars », recadrées
+  sur les pieds — photos d'agence, pas de licence libre, à ses risques).
+- choice : image d'infobox Wikipédia (Commons) de chaque personne, récupérée via
+  l'API `en.wikipedia.org/api/rest_v1/page/summary/<titre>` ; Brandy Aniston
+  vient d'une recherche Commons directe (photo AVN Expo 2013).
+- Cherry Jul : photo de pieds présente mais aucun portrait libre trouvé
+  (ni Wikipédia ni Commons) → inactive tant que `choice/cherry-jul.jpg` manque.
+
 ## Pour ajouter une personne
 Déposer `feets/<slug>.jpg` (photo de pieds) et `choice/<slug>.jpg` (photo de la
 personne) dans `public/images/HappyFeets/`. Le nom affiché est dérivé du slug
