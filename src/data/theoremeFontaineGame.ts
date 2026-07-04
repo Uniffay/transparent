@@ -5,8 +5,10 @@ export type FontaineItem = {
   isOptionA: boolean; // true = Avant (ado), false = Après (adulte)
 };
 
-// 51 stars × 2 photos (avant / après) — générées automatiquement.
-// Option A = AVANT (ado 15-18 ans) · Option B = APRÈS (adulte 22-26 ans).
+// Option A = AVANT (ado ~15-18 ans) · Option B = APRÈS (adulte ~22-26 ans).
+// Chaque photo est une manche indépendante : une personne peut n'avoir qu'un
+// seul côté (ex. Louane en avant seul, Natalie Portman en après seul).
+// Sources : Wikimedia Commons, voir scripts/fontaine-sources.md.
 export const fontaineItems: FontaineItem[] = [
   { id: 'emma-watson-avant', name: 'Emma Watson', isOptionA: true,  src: '/images/fontaine/emma-watson-avant.jpg' },
   { id: 'miley-cyrus-avant', name: 'Miley Cyrus', isOptionA: true,  src: '/images/fontaine/miley-cyrus-avant.jpg' },
@@ -59,6 +61,21 @@ export const fontaineItems: FontaineItem[] = [
   { id: 'kaia-gerber-avant', name: 'Kaia Gerber', isOptionA: true,  src: '/images/fontaine/kaia-gerber-avant.jpg' },
   { id: 'hailey-bieber-avant', name: 'Hailey Bieber', isOptionA: true,  src: '/images/fontaine/hailey-bieber-avant.jpg' },
   { id: 'tate-mcrae-avant', name: 'Tate McRae', isOptionA: true,  src: '/images/fontaine/tate-mcrae-avant.jpg' },
+  { id: 'justin-bieber-avant', name: 'Justin Bieber', isOptionA: true,  src: '/images/fontaine/justin-bieber-avant.jpg' },
+  { id: 'harry-styles-avant', name: 'Harry Styles', isOptionA: true,  src: '/images/fontaine/harry-styles-avant.jpg' },
+  { id: 'shawn-mendes-avant', name: 'Shawn Mendes', isOptionA: true,  src: '/images/fontaine/shawn-mendes-avant.jpg' },
+  { id: 'nick-jonas-avant', name: 'Nick Jonas', isOptionA: true,  src: '/images/fontaine/nick-jonas-avant.jpg' },
+  { id: 'josh-hutcherson-avant', name: 'Josh Hutcherson', isOptionA: true,  src: '/images/fontaine/josh-hutcherson-avant.jpg' },
+  { id: 'daniel-radcliffe-avant', name: 'Daniel Radcliffe', isOptionA: true,  src: '/images/fontaine/daniel-radcliffe-avant.jpg' },
+  { id: 'emma-roberts-avant', name: 'Emma Roberts', isOptionA: true,  src: '/images/fontaine/emma-roberts-avant.jpg' },
+  { id: 'sophie-turner-avant', name: 'Sophie Turner', isOptionA: true,  src: '/images/fontaine/sophie-turner-avant.jpg' },
+  { id: 'abigail-breslin-avant', name: 'Abigail Breslin', isOptionA: true,  src: '/images/fontaine/abigail-breslin-avant.jpg' },
+  { id: 'asa-butterfield-avant', name: 'Asa Butterfield', isOptionA: true,  src: '/images/fontaine/asa-butterfield-avant.jpg' },
+  { id: 'miranda-cosgrove-avant', name: 'Miranda Cosgrove', isOptionA: true,  src: '/images/fontaine/miranda-cosgrove-avant.jpg' },
+  { id: 'cole-sprouse-avant', name: 'Cole Sprouse', isOptionA: true,  src: '/images/fontaine/cole-sprouse-avant.jpg' },
+  { id: 'finn-wolfhard-avant', name: 'Finn Wolfhard', isOptionA: true,  src: '/images/fontaine/finn-wolfhard-avant.jpg' },
+  { id: 'millie-bobby-brown-avant', name: 'Millie Bobby Brown', isOptionA: true,  src: '/images/fontaine/millie-bobby-brown-avant.jpg' },
+  { id: 'louane-avant', name: 'Louane', isOptionA: true,  src: '/images/fontaine/louane-avant.jpg' },
   { id: 'emma-watson-apres', name: 'Emma Watson', isOptionA: false, src: '/images/fontaine/emma-watson-apres.jpg' },
   { id: 'miley-cyrus-apres', name: 'Miley Cyrus', isOptionA: false, src: '/images/fontaine/miley-cyrus-apres.jpg' },
   { id: 'selena-gomez-apres', name: 'Selena Gomez', isOptionA: false, src: '/images/fontaine/selena-gomez-apres.jpg' },
@@ -89,7 +106,6 @@ export const fontaineItems: FontaineItem[] = [
   { id: 'shailene-woodley-apres', name: 'Shailene Woodley', isOptionA: false, src: '/images/fontaine/shailene-woodley-apres.jpg' },
   { id: 'evan-rachel-wood-apres', name: 'Evan Rachel Wood', isOptionA: false, src: '/images/fontaine/evan-rachel-wood-apres.jpg' },
   { id: 'kiernan-shipka-apres', name: 'Kiernan Shipka', isOptionA: false, src: '/images/fontaine/kiernan-shipka-apres.jpg' },
-  { id: 'sadie-sink-apres', name: 'Sadie Sink', isOptionA: false, src: '/images/fontaine/sadie-sink-apres.jpg' },
   { id: 'kylie-jenner-apres', name: 'Kylie Jenner', isOptionA: false, src: '/images/fontaine/kylie-jenner-apres.jpg' },
   { id: 'kendall-jenner-apres', name: 'Kendall Jenner', isOptionA: false, src: '/images/fontaine/kendall-jenner-apres.jpg' },
   { id: 'madison-beer-apres', name: 'Madison Beer', isOptionA: false, src: '/images/fontaine/madison-beer-apres.jpg' },
@@ -110,4 +126,25 @@ export const fontaineItems: FontaineItem[] = [
   { id: 'kaia-gerber-apres', name: 'Kaia Gerber', isOptionA: false, src: '/images/fontaine/kaia-gerber-apres.jpg' },
   { id: 'hailey-bieber-apres', name: 'Hailey Bieber', isOptionA: false, src: '/images/fontaine/hailey-bieber-apres.jpg' },
   { id: 'tate-mcrae-apres', name: 'Tate McRae', isOptionA: false, src: '/images/fontaine/tate-mcrae-apres.jpg' },
+  { id: 'justin-bieber-apres', name: 'Justin Bieber', isOptionA: false, src: '/images/fontaine/justin-bieber-apres.jpg' },
+  { id: 'harry-styles-apres', name: 'Harry Styles', isOptionA: false, src: '/images/fontaine/harry-styles-apres.jpg' },
+  { id: 'shawn-mendes-apres', name: 'Shawn Mendes', isOptionA: false, src: '/images/fontaine/shawn-mendes-apres.jpg' },
+  { id: 'nick-jonas-apres', name: 'Nick Jonas', isOptionA: false, src: '/images/fontaine/nick-jonas-apres.jpg' },
+  { id: 'josh-hutcherson-apres', name: 'Josh Hutcherson', isOptionA: false, src: '/images/fontaine/josh-hutcherson-apres.jpg' },
+  { id: 'daniel-radcliffe-apres', name: 'Daniel Radcliffe', isOptionA: false, src: '/images/fontaine/daniel-radcliffe-apres.jpg' },
+  { id: 'emma-roberts-apres', name: 'Emma Roberts', isOptionA: false, src: '/images/fontaine/emma-roberts-apres.jpg' },
+  { id: 'sophie-turner-apres', name: 'Sophie Turner', isOptionA: false, src: '/images/fontaine/sophie-turner-apres.jpg' },
+  { id: 'abigail-breslin-apres', name: 'Abigail Breslin', isOptionA: false, src: '/images/fontaine/abigail-breslin-apres.jpg' },
+  { id: 'asa-butterfield-apres', name: 'Asa Butterfield', isOptionA: false, src: '/images/fontaine/asa-butterfield-apres.jpg' },
+  { id: 'miranda-cosgrove-apres', name: 'Miranda Cosgrove', isOptionA: false, src: '/images/fontaine/miranda-cosgrove-apres.jpg' },
+  { id: 'cole-sprouse-apres', name: 'Cole Sprouse', isOptionA: false, src: '/images/fontaine/cole-sprouse-apres.jpg' },
+  { id: 'finn-wolfhard-apres', name: 'Finn Wolfhard', isOptionA: false, src: '/images/fontaine/finn-wolfhard-apres.jpg' },
+  { id: 'millie-bobby-brown-apres', name: 'Millie Bobby Brown', isOptionA: false, src: '/images/fontaine/millie-bobby-brown-apres.jpg' },
+  { id: 'rupert-grint-apres', name: 'Rupert Grint', isOptionA: false, src: '/images/fontaine/rupert-grint-apres.jpg' },
+  { id: 'natalie-portman-apres', name: 'Natalie Portman', isOptionA: false, src: '/images/fontaine/natalie-portman-apres.jpg' },
+  { id: 'keira-knightley-apres', name: 'Keira Knightley', isOptionA: false, src: '/images/fontaine/keira-knightley-apres.jpg' },
+  { id: 'kirsten-dunst-apres', name: 'Kirsten Dunst', isOptionA: false, src: '/images/fontaine/kirsten-dunst-apres.jpg' },
+  { id: 'lindsay-lohan-apres', name: 'Lindsay Lohan', isOptionA: false, src: '/images/fontaine/lindsay-lohan-apres.jpg' },
+  { id: 'zac-efron-apres', name: 'Zac Efron', isOptionA: false, src: '/images/fontaine/zac-efron-apres.jpg' },
+  { id: 'timothee-chalamet-apres', name: 'Timothée Chalamet', isOptionA: false, src: '/images/fontaine/timothee-chalamet-apres.jpg' },
 ];
