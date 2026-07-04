@@ -28,6 +28,23 @@ photos listées ci-dessous ; celles de `choice/` sont redimensionnées (800px).
 - choice : « Clarisse Agbegnenou (FRA) 2021.jpg »
   https://commons.wikimedia.org/wiki/File:Clarisse_Agbegnenou_(FRA)_2021.jpg
 
+## Mélanie de Jesus dos Santos (gymnaste, pieds nus au sol)
+- feets : recadrage de « Mélanie de Jesus dos Santos - Glasgow 2018 - 03.jpg »
+  https://commons.wikimedia.org/wiki/File:M%C3%A9lanie_de_Jesus_dos_Santos_-_Glasgow_2018_-_03.jpg
+- choice : « Mélanie de Jesus dos Santos (FRA) Glasgow 2018.jpg »
+  https://commons.wikimedia.org/wiki/File:M%C3%A9lanie_de_Jesus_dos_Santos_(FRA)_Glasgow_2018.jpg
+
+## Romane Dicko (judokate, pieds nus sur le tatami)
+- feets : recadrage de « Judo - Épreuve mixte par équipe - Quart-de-finale France vs Corée - Jeux Olympiques 2024 - Paris Arena Sud (FR75) - 2024-08-03 - 65.jpg » (elle est en blanc, pied en l'air)
+  https://commons.wikimedia.org/wiki/File:Judo_-_%C3%89preuve_mixte_par_%C3%A9quipe_-_Quart-de-finale_France_vs_Cor%C3%A9e_-_Jeux_Olympiques_2024_-_Paris_Arena_Sud_(FR75)_-_2024-08-03_-_65.jpg
+- choice : « Romane Dicko (FRA) 2021.jpg »
+  https://commons.wikimedia.org/wiki/File:Romane_Dicko_(FRA)_2021.jpg
+
+## Pistes écartées (pas de photo Commons exploitable)
+Cesária Évora et Sandie Shaw (pieds jamais visibles), Nadia Comaneci (chaussons),
+Rebeca Andrade (demi-pointes), Loreen (trop loin), Laure Manaudou (portrait seul),
+AURORA / Camille / Zaz (rien sur Commons).
+
 ## Pour ajouter une personne
 Déposer `feets/<slug>.jpg` (photo de pieds) et `choice/<slug>.jpg` (photo de la
 personne) dans `public/images/HappyFeets/`. Le nom affiché est dérivé du slug
