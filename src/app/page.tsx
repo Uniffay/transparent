@@ -89,7 +89,7 @@ const games: Tile[] = [
   {
     id: 'le-bon-match',
     title: 'Happy Feets',
-    description: 'Une image, 4 propositions. Clique sur la bonne. (Placeholder — à remplir.)',
+    description: 'Une photo de pieds, 4 personnes. Devine à qui ils appartiennent sans te tromper.',
     available: true,
     emoji: '🦶',
     tag: 'Streak',
