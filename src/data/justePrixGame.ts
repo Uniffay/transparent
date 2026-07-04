@@ -9,6 +9,7 @@ export type PriceItem = {
 export const priceItems: PriceItem[] = [
   { id: 'feet-pics-creator', name: 'Photo de pieds vendue par une créatrice en ligne', price: 5, src: '/images/prix/feet-pics-creator.jpg' },
   { id: 'lily-allen-feet', name: 'Abonnement au OnlyFans des pieds de Lily Allen (1 mois)', price: 9, src: '/images/prix/lily-allen-feet.jpg' },
+  { id: 'breast-milk-bottle', name: 'Bouteille de lait maternel vendue en ligne (les bodybuilders adorent)', price: 12, src: '/images/prix/breast-milk-bottle.jpg' },
   { id: 'used-tissue-creator', name: 'Mouchoir usagé vendu par une créatrice en ligne', price: 14, src: '/images/prix/used-tissue-creator.jpg' },
   { id: 'worn-socks-creator', name: 'Chaussettes portées vendues par une créatrice en ligne', price: 23, src: '/images/prix/worn-socks-creator.jpg' },
   { id: 'belle-delphine-bath-water', name: 'Eau de bain "GamerGirl" de Belle Delphine (1 flacon)', price: 28, src: '/images/prix/belle-delphine-bath-water.jpg' },
@@ -21,6 +22,7 @@ export const priceItems: PriceItem[] = [
   { id: 'satan-shoes', name: 'Nike Air Max 97 "Satan Shoes" de Lil Nas X (avec goutte de sang)', price: 937, src: '/images/prix/satan-shoes.jpg' },
   { id: 'pope-mitre-dorito', name: 'Chips Dorito en forme de mitre du pape (eBay)', price: 1012, src: '/images/prix/pope-mitre-dorito.jpg' },
   { id: 'diana-wedding-cake', name: 'Part du gâteau de mariage de Lady Di (1981, vendue en 2021)', price: 2300, src: '/images/prix/diana-wedding-cake.jpg' },
+  { id: 'queen-victoria-nightdress', name: 'Chemise de nuit de la reine Victoria (enchère 2008)', price: 5980, src: '/images/prix/queen-victoria-nightdress.jpg' },
   { id: 'lady-gaga-fake-nail', name: 'Faux ongle de Lady Gaga perdu en concert (eBay)', price: 11500, src: '/images/prix/lady-gaga-fake-nail.jpg' },
   { id: 'szechuan-sauce', name: 'Sachet de sauce Szechuan McDo de 1998 (hype Rick et Morty)', price: 13524, src: '/images/prix/szechuan-sauce.jpg' },
   { id: 'queen-victoria-bloomers', name: 'Culotte bouffante en soie de la reine Victoria (enchère 2011)', price: 13750, src: '/images/prix/queen-victoria-bloomers.jpg' },
@@ -29,6 +31,7 @@ export const priceItems: PriceItem[] = [
   { id: 'virgin-mary-grilled-cheese', name: "Croque-monsieur à l'effigie de la Vierge Marie (eBay)", price: 25760, src: '/images/prix/virgin-mary-grilled-cheese.jpg' },
   { id: 'john-lennon-tooth', name: 'Molaire cariée de John Lennon (enchère 2011)', price: 28700, src: '/images/prix/john-lennon-tooth.jpg' },
   { id: 'truman-capote-ashes', name: 'Cendres de Truman Capote dans leur boîte (enchère 2016)', price: 40250, src: '/images/prix/truman-capote-ashes.jpg' },
+  { id: 'madonna-cone-bra', name: 'Soutien-gorge conique de Madonna (Blond Ambition, Gaultier)', price: 47840, src: '/images/prix/madonna-cone-bra.jpg' },
   { id: 'cheetozard', name: 'Cheeto en forme de Dracaufeu, le "Cheetozard" (enchère 2025)', price: 80812, src: '/images/prix/cheetozard.jpg' },
   { id: 'harambe-cheeto', name: 'Cheeto en forme du gorille Harambe (eBay)', price: 91908, src: '/images/prix/harambe-cheeto.jpg' },
   { id: 'among-us-nugget', name: 'Nugget McDo en forme de personnage Among Us (eBay)', price: 91997, src: '/images/prix/among-us-nugget.jpg' },

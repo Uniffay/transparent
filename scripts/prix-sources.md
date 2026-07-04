@@ -33,6 +33,17 @@ Ajoutés (ventes documentées) :
   japonaise en bois sculpté, 43 750 $ chez Julien's Auctions (sept. 2016).
   Image : VM 01809 – Japanese lacquer box – 19th century.jpg.
 
+Ajouts du 5 juillet 2026 (2e vague) :
+- breast-milk-bottle 12 € — bouteille de lait maternel, marché en ligne réel
+  (~1-3 $/oz, acheté notamment par des bodybuilders). Image Commons :
+  Bottle of Pumped Breast Milk.jpg.
+- queen-victoria-nightdress 5 980 € — chemise de nuit de la reine Victoria,
+  5 200 £ chez Hansons en 2008 (authentifiée par le V&A). Image Commons :
+  Nightdress (AM 19022-1).jpg.
+- madonna-cone-bra 47 840 € — corset conique Gaultier de la tournée Blond
+  Ambition 1990, 52 000 $ chez Christie's Londres (2012). Image Commons :
+  Madonna's Blond Ambition Corset.jpg (le vrai corset, exposé en musée).
+
 ## Objets restants du 4 juillet 2026 (rappel des ventes)
 
 Eau de bain Belle Delphine 30 $ le flacon (2019, revente eBay ~400 $) ·
