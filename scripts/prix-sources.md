@@ -1,64 +1,60 @@
 # Cash-ta-strophe (juste prix) — sources des images et des prix
 
-Mise à jour du 4 juillet 2026. Toutes les nouvelles images viennent de
-Wikimedia Commons (licences libres), téléchargées en 1600px puis
-redimensionnées en 800px (jpeg q85), comme pour Théorème Fontaine.
+Mise à jour du 5 juillet 2026. Les images du jeu viennent de Wikimedia Commons
+(licences libres), téléchargées en 1600px puis redimensionnées en 800px
+(jpeg q85). Les photos authentiques (presse/enchères, sous copyright) sont
+conservées hors projet dans `../reference-prix/` comme références visuelles.
 
-Les photos authentiques des ventes (annonces eBay, photos de presse) sont
-sous copyright et ne peuvent pas être publiées : les images du jeu sont donc
-des illustrations fidèles de l'objet (même type, même forme), sauf mention
-« authentique » ci-dessous.
+Prix : montant réel de la vente documentée, converti USD→EUR à ~0,92
+(GBP→EUR pour la reine Victoria).
 
-Prix : montant réel de la vente documentée, converti USD→EUR à ~0,92.
+## Curation du 5 juillet 2026
 
-## Images remplacées le 4 juillet 2026
+Supprimés (aucune vraie photo de l'objet retrouvable) : chewing-gum Britney,
+test de grossesse Britney, mouchoir Scarlett Johansson, pain perdu Justin
+Timberlake, corn flake Illinois, mèche Justin Bieber, bocal d'air Brangelina,
+canne hantée, radios Marilyn Monroe.
 
-- elvis-presley-hair ← mèche de cheveux sombres de la collection Beethoven
-  (recadrée pour masquer le document daté 1827) ; l'ancienne image montrait
-  des cheveux blancs. Illustration.
-- justin-bieber-hair ← Debbie Reynolds Auction - a lock of Mary Pickford's
-  hair in wooden display box.jpg (recadrée pour masquer l'étiquette
-  « Mary Pickford ») ; vraie mèche vendue aux enchères, blond clair. Illustration.
-- justin-timberlake-french-toast ← French toast, NYC style (49400228023).jpg ;
-  l'ancienne image montrait une simple tranche de pain de mie.
-- belle-delphine-bath-water ← Belle Delphine - 2020-b (cropped).png ;
-  photo authentique de Belle Delphine elle-même (l'eau de bain en vente
-  n'a pas de photo libre).
-- worn-underwear-creator ← Knickers1.jpg ; culottes en dentelle, plus
-  cohérent avec « créatrice » que l'ancien caleçon homme de musée.
-- pope-mitre-dorito ← 2020-04-02 ... A single Nacho Cheese Dorito chip....jpg ;
-  un seul Dorito au lieu d'un tas de chips.
+Ajoutés (ventes documentées) :
+- feet-pics-creator 5 € — prix typique d'une photo de pieds (FeetFinder etc.).
+  Image : Feet in mirror with red nail polish.jpg.
+- lily-allen-feet 9 € — abonnement mensuel 10 $ au OnlyFans « Lily Allen
+  FTSE500 » (pieds), révélé en octobre 2024 (elle gagne plus qu'avec Spotify).
+  Image : Lily Allen at Southside 2014 - Cropped.jpg.
+- boob-sweat-jar-matto 460 € — fiole de sueur de poitrine de Stephanie Matto,
+  500 $ pièce (mai 2022, ~30 000 $/semaine). Image : Perfume Bottle.jpg.
+- queen-victoria-bloomers 13 750 € — culotte bouffante en soie de la reine
+  Victoria (tour de taille 142 cm !), adjugée 9 375 £ (~14 950 $) à Édimbourg
+  en 2011. Image : Bloomers, pair (AM 1956.188.10-1).jpg.
+- john-lennon-tooth 28 700 € — molaire cariée de John Lennon donnée à sa
+  gouvernante, adjugée 19 000 £ (31 200 $) chez Omega Auctions en nov. 2011.
+  Image : Lower wisdom tooth.jpg.
+- truman-capote-ashes 40 250 € — cendres de Truman Capote dans leur boîte
+  japonaise en bois sculpté, 43 750 $ chez Julien's Auctions (sept. 2016).
+  Image : VM 01809 – Japanese lacquer box – 19th century.jpg.
 
-## Nouveaux objets du 4 juillet 2026 (vente documentée, prix USD)
+## Objets restants du 4 juillet 2026 (rappel des ventes)
 
-- elvis-water-cup 419 € — gobelet d'eau bu par Elvis en concert (1977),
-  vendu 455 $ sur eBay en 2004. Image : Glass of water ouside.jpg.
-- satan-shoes 937 € — Nike Air Max 97 « Satan Shoes » MSCHF × Lil Nas X
-  (666 paires, une goutte de sang dans la semelle), 1 018 $ à la revente.
-  Image : Nike Air Max 97 Black.jpg (le modèle de base, illustration).
-- diana-wedding-cake 2 300 € — part du gâteau de mariage de Charles et Diana
-  (1981), adjugée ~2 500 $ chez Dominic Winter en août 2021.
-  Image : Slice of Schubert's Bakery Fruitcake (31772532692).jpg.
-- szechuan-sauce 13 524 € — sachet de sauce Szechuan McDonald's de 1998,
-  vendu 14 700 $ sur eBay (hype Rick et Morty, 2017). Image : sachet
-  authentique (réédition 2018) Modern McDonalds Szechuan Sauce packet 2018.
-- ghost-cane 59 800 € — canne « hantée » vendue 65 000 $ sur eBay (2004)
-  par une mère pour rassurer son fils, achetée par GoldenPalace.com.
-  Image : Cane (AM 72245-4).jpg (canne de musée, illustration).
-- cheetozard 80 812 € — Cheeto en forme de Dracaufeu, adjugé 87 840 $
-  (Goldin, mars 2025). Image : crop de Cheetos puffs 한국어A.jpg.
-- harambe-cheeto 91 908 € — Cheeto ressemblant au gorille Harambe,
-  enchère eBay finie à 99 900 $ (février 2017). Image : autre crop du même fichier.
-- among-us-nugget 91 997 € — nugget McDo (menu BTS) en forme de personnage
-  d'Among Us, 99 997 $ sur eBay (2021), record Guinness. Image :
-  2020-04-01 ... A single Chicken McNugget....jpg.
+Eau de bain Belle Delphine 30 $ le flacon (2019, revente eBay ~400 $) ·
+gobelet d'Elvis 455 $ (2004) · pet en bocal Matto 1 000 $ · Satan Shoes
+1 018 $ · Dorito mitre 1 209 $ (GoldenPalace) · part de gâteau de Lady Di
+~2 500 $ (Dominic Winter, août 2021) · ongle de Lady Gaga ~12 500 $ (2013) ·
+sachet Szechuan 1998 14 700 $ (2017) · mèche d'Elvis ~15 000 $ · calcul rénal
+de Shatner 25 000 $ (GoldenPalace, 2006) · croque Vierge Marie 28 000 $
+(GoldenPalace, 2004) · Cheetozard 87 840 $ (Goldin, mars 2025) · Cheeto
+Harambe 99 900 $ (2017) · nugget Among Us 99 997 $ (2021, record Guinness).
+Les objets « créateur/créatrice en ligne » (photo de pieds 5 €, mouchoir 14 €,
+chaussettes 23 €, boxer 37 €, culotte 46 €) sont des prix de marché typiques.
 
-## Prix des 20 objets d'origine
+## UI
 
-Tous vérifiés le 4 juillet 2026 contre les ventes documentées (conversion
-~0,92) : Britney gum 14 000 $, JT pain perdu 1 025 $, Dorito mitre 1 209 $,
-ongle Lady Gaga ~12 500 $, croque Vierge Marie 28 000 $, calcul rénal
-Shatner 25 000 $, mèche Bieber 40 668 $, radios Marilyn 45 000 $, etc.
-Les 4 objets « créateur/créatrice en ligne » (mouchoir 14 €, chaussettes
-23 €, boxer 37 €, sous-vêtement 46 €) sont des prix de marché typiques,
-pas une vente unique documentée.
+PriceGame.tsx : slider linéaire basique 1 → 100 000 € + champ numérique
+éditable (le gros chiffre affiché est un input) pour taper le prix direct.
+Barre de comparaison au reveal en échelle log (lisibilité des petits prix).
+
+## Références visuelles (copyright — usage local uniquement)
+
+`C:/Users/quent/Documents/UniGames/reference-prix/` : vraies photos
+presse/enchères des objets (Cheetozard en vitrine, Dorito-mitre GoldenPalace,
+dent de Lennon, boîte de Capote, culotte de Victoria encadrée, etc.).
+Ne pas publier telles quelles sans accord de l'utilisateur.

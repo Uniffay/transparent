@@ -8,12 +8,12 @@ import { PriceItem } from '@/data/justePrixGame';
 type Phase = 'intro' | 'playing' | 'reveal' | 'results';
 
 const MIN = 1;
-const MAX = 50000;
+const MAX = 100000;
 const LN_MIN = Math.log(MIN);
 const LN_MAX = Math.log(MAX);
-const STEPS = 1000;
 const SCORE_K = 1.4;
 const MAX_SCORE_PER_ITEM = 1000;
+const DEFAULT_GUESS = '1000';
 
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
@@ -22,18 +22,6 @@ function shuffle<T>(arr: T[]): T[] {
     [a[i], a[j]] = [a[j], a[i]];
   }
   return a;
-}
-
-// slider position (0..STEPS) -> a "nice" rounded euro price (log-mapped)
-function priceFromPos(pos: number): number {
-  const v = Math.exp(LN_MIN + (pos / STEPS) * (LN_MAX - LN_MIN));
-  let r: number;
-  if (v < 20) r = Math.round(v);
-  else if (v < 100) r = Math.round(v / 5) * 5;
-  else if (v < 1000) r = Math.round(v / 10) * 10;
-  else if (v < 10000) r = Math.round(v / 100) * 100;
-  else r = Math.round(v / 500) * 500;
-  return Math.max(MIN, r);
 }
 
 // euro price -> percent position on the log axis (for reveal markers)
@@ -56,36 +44,36 @@ export default function PriceGame({ items }: { items: PriceItem[] }) {
   const [shuffled] = useState(() => shuffle(items));
   const [phase, setPhase] = useState<Phase>('intro');
   const [index, setIndex] = useState(0);
-  const [pos, setPos] = useState(500);
+  const [guessStr, setGuessStr] = useState(DEFAULT_GUESS);
   const [totalScore, setTotalScore] = useState(0);
   const [lastScore, setLastScore] = useState(0);
   const [scores, setScores] = useState<number[]>([]);
 
   const current = shuffled[index];
-  const guess = priceFromPos(pos);
+  const guess = Math.max(MIN, parseInt(guessStr.replace(/[^\d]/g, ''), 10) || MIN);
   const maxTotal = shuffled.length * MAX_SCORE_PER_ITEM;
 
   const handleConfirm = useCallback(() => {
-    const s = calcScore(priceFromPos(pos), current.price);
+    const s = calcScore(guess, current.price);
     setLastScore(s);
     setTotalScore((prev) => prev + s);
     setScores((prev) => [...prev, s]);
     setPhase('reveal');
-  }, [pos, current]);
+  }, [guess, current]);
 
   const handleNext = useCallback(() => {
     if (index + 1 >= shuffled.length) {
       setPhase('results');
     } else {
       setIndex((i) => i + 1);
-      setPos(500);
+      setGuessStr(DEFAULT_GUESS);
       setPhase('playing');
     }
   }, [index, shuffled.length]);
 
   const handleRestart = useCallback(() => {
     setIndex(0);
-    setPos(500);
+    setGuessStr(DEFAULT_GUESS);
     setTotalScore(0);
     setLastScore(0);
     setScores([]);
@@ -161,6 +149,7 @@ export default function PriceGame({ items }: { items: PriceItem[] }) {
     );
   }
 
+  const sliderValue = Math.min(guess, MAX);
   const guessPct = pctFromPrice(guess);
   const actualPct = pctFromPrice(current.price);
 
@@ -195,25 +184,36 @@ export default function PriceGame({ items }: { items: PriceItem[] }) {
 
             {phase === 'playing' ? (
               <>
-                <div className="text-center mb-4">
-                  <span className="text-5xl font-black" style={{ color: '#0F7B3F' }}>{guess.toLocaleString('fr-FR')}</span>
-                  <span className="text-xl text-gray-400 ml-1">€</span>
+                {/* Direct price input */}
+                <div className="flex items-baseline justify-center gap-1 mb-4">
+                  <input
+                    type="number"
+                    inputMode="numeric"
+                    min={MIN}
+                    value={guessStr}
+                    onChange={(e) => setGuessStr(e.target.value)}
+                    onBlur={() => setGuessStr(String(guess))}
+                    className="text-5xl font-black text-center bg-transparent outline-none border-b-2 border-dashed w-52 focus:border-solid [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                    style={{ color: '#0F7B3F', borderColor: '#0F7B3F' }}
+                  />
+                  <span className="text-xl text-gray-400">€</span>
                 </div>
 
+                {/* Basic linear slider */}
                 <input
                   type="range"
-                  min={0} max={STEPS} step={1}
-                  value={pos}
-                  onChange={(e) => setPos(Number(e.target.value))}
+                  min={MIN} max={MAX} step={1}
+                  value={sliderValue}
+                  onChange={(e) => setGuessStr(e.target.value)}
                   className="w-full h-3 rounded-full appearance-none cursor-pointer mb-2"
                   style={{
-                    background: `linear-gradient(to right, #0F7B3F ${(pos / STEPS) * 100}%, #E5E7EB ${(pos / STEPS) * 100}%)`,
+                    background: `linear-gradient(to right, #0F7B3F ${(sliderValue / MAX) * 100}%, #E5E7EB ${(sliderValue / MAX) * 100}%)`,
                     accentColor: '#0F7B3F',
                   }}
                 />
                 <div className="flex justify-between text-xs text-gray-300 mb-4">
                   <span>1 €</span>
-                  <span>50 000 €</span>
+                  <span>100 000 €</span>
                 </div>
 
                 <button
@@ -242,7 +242,7 @@ export default function PriceGame({ items }: { items: PriceItem[] }) {
                     <span><span className="inline-block w-2 h-2 rounded-full bg-green-500 mr-1" />Réel</span>
                     <span><span className="inline-block w-2 h-2 rounded-full mr-1" style={{ background: '#9333EA' }} />Toi</span>
                   </span>
-                  <span>50 000 €</span>
+                  <span>100 000 €</span>
                 </div>
 
                 {current.note && (
