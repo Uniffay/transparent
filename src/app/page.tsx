@@ -71,7 +71,7 @@ const games: Tile[] = [
   {
     id: 'theoreme-fontaine',
     title: 'Théorême Fontaine',
-    description: 'Avant ou Après ? La star est-elle ado ou adulte sur la photo ? Enchaîne les bonnes réponses.',
+    description: '-18 ou +18 ? La star est-elle ado ou adulte sur la photo ? Enchaîne les bonnes réponses.',
     available: true,
     emoji: '⏳',
     tag: 'Streak',
