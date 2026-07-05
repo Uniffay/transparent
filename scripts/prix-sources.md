@@ -44,6 +44,29 @@ Ajouts du 5 juillet 2026 (2e vague) :
   Ambition 1990, 52 000 $ chez Christie's Londres (2012). Image Commons :
   Madonna's Blond Ambition Corset.jpg (le vrai corset, exposé en musée).
 
+Ajouts du 5 juillet 2026 (3e vague, thème « sexy ») :
+- worn-thong-creator 40 € — string porté, prix de marché typique.
+  Image Commons : Black-thong-swimsuit.jpg (homme de dos à la plage 😄).
+- chastity-belt 500 € — ceinture de chasteté en fer « médiévale » (en réalité
+  souvent des curiosités du 19e), ventes types 135-700 $ (LiveAuctioneers).
+  Image Commons : Iron chastity belt, possibly 16th Century Wellcome L0035678.
+- marilyn-golden-dreams-calendar 1 435 € — calendrier original « Golden
+  Dreams » (photo nue de 1949, payée 50 $ à Marilyn), exemplaire vendu
+  1 560 $ premium inclus. Image Commons : Marilyn Monroe 1953 crop.jpg.
+- marilyn-monroe-bra 25 875 € — soutien-gorge de Marilyn dans « Certains
+  l'aiment chaud », 28 125 $ chez Julien's (2024). Image Commons :
+  Brassiere (AM 2000.93.70-1).jpg ; vraie photo d'enchère en référence.
+- madonna-nude-photo 34 500 € — tirage Lee Friedlander de Madonna nue à
+  20 ans (1979, séance payée ~25 $), 37 500 $ chez Christie's (fév. 2009).
+  Image Commons : Madonna 1990 cropped.jpg (illustration, pas le nu !).
+- playboy-first-issue 44 850 € — Playboy n°1 (déc. 1953, Marilyn en
+  couverture), exemplaire CGC 9.4 signé Hefner, 48 750 $ (Heritage, 2021).
+  Image Commons : Hugh Hefner Glamourcon 2010.jpg (illustration).
+
+Écartés faute de vente documentée : culotte de Madonna (enchère 2017
+bloquée par un juge), fouet de Catwoman (toujours dans le placard de
+Michelle Pfeiffer).
+
 ## Objets restants du 4 juillet 2026 (rappel des ventes)
 
 Eau de bain Belle Delphine 30 $ le flacon (2019, revente eBay ~400 $) ·
