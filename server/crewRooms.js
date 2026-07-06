@@ -111,6 +111,30 @@ function registerCrewSocket(io) {
       broadcast(currentRoom);
     });
 
+    socket.on('choose-task', ({ taskId }) => {
+      if (!currentRoom) return;
+      const room = getOrCreateRoom(currentRoom);
+      const res = room.chooseTask(socket.id, taskId);
+      if (res?.error) { socket.emit('error', res.error); return; }
+      broadcastGame(currentRoom);
+    });
+
+    socket.on('pass-task', () => {
+      if (!currentRoom) return;
+      const room = getOrCreateRoom(currentRoom);
+      const res = room.passTask(socket.id);
+      if (res?.error) { socket.emit('error', res.error); return; }
+      broadcastGame(currentRoom);
+    });
+
+    socket.on('set-prediction', ({ taskId, value }) => {
+      if (!currentRoom) return;
+      const room = getOrCreateRoom(currentRoom);
+      const res = room.setPrediction(socket.id, taskId, value);
+      if (res?.error) { socket.emit('error', res.error); return; }
+      broadcastGame(currentRoom);
+    });
+
     socket.on('play-card', ({ card }) => {
       if (!currentRoom) return;
       const room = getOrCreateRoom(currentRoom);

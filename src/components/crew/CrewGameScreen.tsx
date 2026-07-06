@@ -42,12 +42,13 @@ export default function CrewGameScreen({
   const isHost = gameState.hostId === myId;
   const isMyTurn = gameState.currentPlayerId === myId && gameState.state === 'playing';
   const iSignaled = gameState.signalsUsed[myId] ?? false;
-  const canSignal = gameState.commTokens > 0 && !iSignaled && gameState.state === 'playing';
+  const canSignal = !iSignaled && gameState.state === 'playing';
 
   const legal = useMemo(() => legalCards(gameState.hand, gameState.currentTrick), [gameState.hand, gameState.currentTrick]);
   const eligibleForSignal = useMemo(() => signalEligibleCards(gameState.hand), [gameState.hand]);
 
-  function playerLabel(id: string) {
+  function playerLabel(id: string | null) {
+    if (!id) return '';
     const p = gameState.players.find((pl) => pl.id === id);
     return p ? `${p.emoji} ${p.name}` : '?';
   }
@@ -78,21 +79,21 @@ export default function CrewGameScreen({
       </div>
 
       {/* Task board */}
-      <div className="bg-white/95 rounded-2xl p-3 mb-3 overflow-x-auto">
+      <div className="bg-white/95 rounded-2xl p-3 mb-3 max-h-40 overflow-y-auto">
         <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2">Missions</p>
-        <div className="flex gap-3">
-          {gameState.tasks.map((t, i) => (
-            <div key={i} className={`flex flex-col items-center gap-1 flex-shrink-0 ${t.done ? 'opacity-50' : ''}`}>
-              <div className="relative">
-                <CardChip card={t.card} size="sm" />
-                {t.order != null && (
-                  <span className="absolute -top-1.5 -left-1.5 bg-gray-800 text-white text-[10px] font-black rounded-full w-4 h-4 flex items-center justify-center">
-                    {t.order}
-                  </span>
-                )}
-                {t.done && <span className="absolute -top-1.5 -right-1.5 bg-green-500 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">✓</span>}
+        <div className="flex flex-col gap-1.5">
+          {gameState.tasks.map((t) => (
+            <div key={t.id} className={`flex items-center gap-2 rounded-lg px-2 py-1.5 ${t.done ? 'bg-green-50 opacity-60' : 'bg-gray-50'}`}>
+              {t.kind === 'WIN_CARD' ? (
+                <CardChip card={{ suit: t.params.suit as CrewCard['suit'], value: t.params.value as number }} size="sm" />
+              ) : (
+                <span className="text-xl flex-shrink-0">🎯</span>
+              )}
+              <div className="flex-1 min-w-0">
+                <p className="text-xs text-gray-700 leading-tight">{t.desc}</p>
+                <p className="text-[10px] text-gray-400">{playerLabel(t.assignee)}{t.order != null ? ` · ordre ${t.order}` : ''}</p>
               </div>
-              <span className="text-[10px] text-gray-500 text-center leading-tight">{playerLabel(t.assignee)}</span>
+              {t.done && <span className="text-green-500 flex-shrink-0">✓</span>}
             </div>
           ))}
         </div>
@@ -166,7 +167,7 @@ export default function CrewGameScreen({
               📡 {signalMode ? 'Annuler' : 'Signaler'}
             </button>
           )}
-          {!canSignal && gameState.commTokens > 0 && iSignaled && (
+          {iSignaled && (
             <span className="text-[10px] text-gray-400">Signal déjà utilisé</span>
           )}
         </div>

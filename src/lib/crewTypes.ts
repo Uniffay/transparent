@@ -4,7 +4,18 @@ export type CrewCard = { suit: Suit; value: number };
 
 export type CrewPlayer = { id: string; name: string; emoji: string; ready: boolean };
 
-export type CrewTask = { card: CrewCard; order: number | null; assignee: string; done: boolean };
+export type CrewTask = {
+  id: string;
+  kind: string;
+  params: Record<string, unknown>;
+  difficulty: number;
+  desc: string;
+  order: number | null;
+  forbidCaptain: boolean;
+  needsPrediction: boolean;
+  assignee: string | null;
+  done: boolean;
+};
 
 export type CrewSignal = { card: CrewCard; type: 'haute' | 'basse' | 'only' };
 
@@ -12,18 +23,17 @@ export type CrewMission = {
   id: string;
   ruleset: 'base' | 'extension';
   n: number;
-  taskCount: number;
-  ordered: boolean;
-  commTokens: number;
   desc: string;
-  rocketMax: number;
+  taskCount?: number;
+  ordered?: boolean;
+  difficulty?: number;
 };
 
 export type CrewResult = { outcome: 'won' | 'lost'; reason?: string };
 
 export type CrewRoomUpdate = {
   roomId: string;
-  state: 'lobby' | 'playing' | 'result';
+  state: 'lobby' | 'task-select' | 'predict' | 'playing' | 'result';
   mode: 'base' | 'extension';
   missionId: string;
   hostId: string | null;
@@ -37,9 +47,11 @@ export type CrewGameState = CrewRoomUpdate & {
   handCounts: Record<string, number>;
   commanderId: string | null;
   tasks: CrewTask[];
+  currentChooserId: string | null;
+  canPass: boolean;
+  myPendingPredictionTaskIds: string[];
   signals: Record<string, CrewSignal>;
   signalsUsed: Record<string, boolean>;
-  commTokens: number;
   currentTrick: { playerId: string; card: CrewCard }[];
   trickLeaderId: string | null;
   currentPlayerId: string | null;

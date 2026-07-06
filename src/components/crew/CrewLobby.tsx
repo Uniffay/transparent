@@ -58,7 +58,7 @@ export default function CrewLobby({
             >
               {m === 'base' ? '🚀 Jeu de base' : '🌌 Extension'}
               <span className="block text-[10px] font-normal opacity-80">
-                {m === 'base' ? 'Fusées 1-4' : 'Fusées 1-5, missions +dures'}
+                {m === 'base' ? 'Tâches simples' : 'Missions Deep Sea, tâches variées'}
               </span>
             </button>
           ))}

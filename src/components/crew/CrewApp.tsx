@@ -5,6 +5,8 @@ import { crewSocket } from '@/lib/crewSocket';
 import { CrewCard, CrewGameState, CrewRoomUpdate } from '@/lib/crewTypes';
 import CrewHome from './CrewHome';
 import CrewLobby from './CrewLobby';
+import CrewTaskSelect from './CrewTaskSelect';
+import CrewPredict from './CrewPredict';
 import CrewGameScreen from './CrewGameScreen';
 
 type Screen = 'home' | 'lobby' | 'game';
@@ -84,6 +86,9 @@ export default function CrewApp() {
   const kickPlayer = useCallback((targetId: string) => crewSocket.emit('kick-player', { targetId }), []);
   const playCard = useCallback((card: CrewCard) => crewSocket.emit('play-card', { card }), []);
   const sendSignal = useCallback((card: CrewCard) => crewSocket.emit('send-signal', { card }), []);
+  const chooseTask = useCallback((taskId: string) => crewSocket.emit('choose-task', { taskId }), []);
+  const passTask = useCallback(() => crewSocket.emit('pass-task'), []);
+  const setPrediction = useCallback((taskId: string, value: number) => crewSocket.emit('set-prediction', { taskId, value }), []);
   const hostAction = useCallback((action: 'restart' | 'terminate') => crewSocket.emit('host-action', { action }), []);
   const leaveRoom = useCallback(() => {
     crewSocket.emit('leave-room');
@@ -107,6 +112,14 @@ export default function CrewApp() {
         error={error}
       />
     );
+  }
+
+  if (gameState.state === 'task-select') {
+    return <CrewTaskSelect gameState={gameState} myId={myId} onChooseTask={chooseTask} onPassTask={passTask} />;
+  }
+
+  if (gameState.state === 'predict') {
+    return <CrewPredict gameState={gameState} onSetPrediction={setPrediction} />;
   }
 
   return (
